@@ -1,0 +1,3079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HKDSE M1 Concept Atlas — Comic Revision Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<style>
+:root {
+  --ink: #18202c;
+  --paper: #fffaf0;
+  --paper-dots: #efe4ce;
+  --card: #ffffff;
+  --border: 3px solid #18202c;
+  --shadow-sm: 3px 3px 0px #18202c;
+  --shadow-md: 5px 5px 0px #18202c;
+  --shadow-lg: 8px 8px 0px #18202c;
+
+  /* 6 Category Color Palettes */
+  --cat1-main: #0d9488;   /* 1. Basic Knowledge: Teal / Emerald */
+  --cat1-bg: #e6f7f5;
+
+  --cat2-main: #4f46e5;   /* 2. Differentiation: Indigo / Royal Blue */
+  --cat2-bg: #eef2ff;
+
+  --cat3-main: #d97706;   /* 3. Integration: Amber / Orange */
+  --cat3-bg: #fef3c7;
+
+  --cat4-main: #e11d48;   /* 4. Probability: Rose / Crimson */
+  --cat4-bg: #ffe4e6;
+
+  --cat5-main: #7c3aed;   /* 5. Discrete Random Variables: Violet / Purple */
+  --cat5-bg: #f3e8ff;
+
+  --cat6-main: #0284c7;   /* 6. Normal Distribution & Sampling: Cyan / Sky Blue */
+  --cat6-bg: #e0f2fe;
+
+  --warn-bg: #fff2db;
+  --warn-border: #e85d04;
+  --warn-ink: #6a2400;
+  --focus: #ffbe0b;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  font-size: 1.04rem;
+  line-height: 1.6;
+  background-color: var(--paper);
+  background-image: radial-gradient(var(--paper-dots) 1.75px, transparent 1.75px);
+  background-size: 20px 20px;
+}
+
+h1, h2, h3, .comic-font {
+  font-family: "Fredoka", "Plus Jakarta Sans", system-ui, sans-serif;
+  letter-spacing: 0.01em;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0);
+  white-space: nowrap; border: 0;
+}
+
+/* Top Comic Header Bar */
+.app-bar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: #ffd166;
+  border-bottom: var(--border);
+  box-shadow: 0 4px 0 rgba(24, 32, 44, 0.14);
+  padding: 0.65rem 1rem;
+}
+
+.app-bar-inner {
+  max-width: 82rem;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem 0.9rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  text-decoration: none;
+  color: var(--ink);
+  font-family: "Fredoka", sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  background: #ffffff;
+  border: var(--border);
+  border-radius: 14px;
+  padding: 0.35rem 0.85rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.brand:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 #18202c;
+}
+
+.brand-badge {
+  background: #ff6b35;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0.12rem 0.45rem;
+  border-radius: 999px;
+  border: 2px solid var(--ink);
+  text-transform: uppercase;
+}
+
+#search-form {
+  flex: 1 1 16rem;
+  display: flex;
+  align-items: stretch;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+#search {
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.95rem;
+  border: var(--border);
+  border-radius: 14px;
+  background: #ffffff;
+  color: var(--ink);
+  font: inherit;
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+
+#search::placeholder { color: #667385; font-weight: 500; }
+#search:focus {
+  outline: none;
+  background: #fffdf5;
+  box-shadow: 4px 4px 0 #3a86ff;
+}
+
+.comic-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 2.75rem;
+  padding: 0.45rem 0.95rem;
+  border: var(--border);
+  border-radius: 14px;
+  background: #ffffff;
+  color: var(--ink);
+  font-family: "Fredoka", sans-serif;
+  font-weight: 600;
+  font-size: 0.98rem;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.15s ease;
+  white-space: nowrap;
+}
+
+.comic-btn:hover {
+  transform: translate(-1.5px, -1.5px);
+  box-shadow: 4.5px 4.5px 0 #18202c;
+}
+
+.comic-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 #18202c;
+}
+
+.comic-btn-surprise {
+  background: #06d6a0;
+  color: #102a24;
+}
+
+#search-clear[hidden] { display: none !important; }
+
+/* Category Pill Navigation Strip */
+.cat-nav-wrap {
+  background: #ffffff;
+  border-bottom: var(--border);
+  padding: 0.65rem 1rem;
+}
+
+.cat-nav {
+  max-width: 82rem;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.cat-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.42rem 0.85rem;
+  border: 2.5px solid var(--ink);
+  border-radius: 999px;
+  background: #f8f6f0;
+  color: var(--ink);
+  font-family: "Fredoka", sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--ink);
+  transition: transform 0.1s ease, background-color 0.15s ease;
+}
+
+.cat-pill:hover { transform: translateY(-1px); }
+
+.cat-pill .pill-count {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.05rem 0.45rem;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1.5px solid var(--ink);
+}
+
+.cat-pill.active[data-cat="all"] { background: #18202c; color: #ffffff; }
+.cat-pill.active[data-cat="all"] .pill-count { color: #18202c; }
+
+.cat-pill.active[data-cat="basic"] { background: var(--cat1-main); color: #ffffff; }
+.cat-pill.active[data-cat="basic"] .pill-count { color: var(--ink); }
+
+.cat-pill.active[data-cat="diff"] { background: var(--cat2-main); color: #ffffff; }
+.cat-pill.active[data-cat="diff"] .pill-count { color: var(--ink); }
+
+.cat-pill.active[data-cat="int"] { background: var(--cat3-main); color: #ffffff; }
+.cat-pill.active[data-cat="int"] .pill-count { color: var(--ink); }
+
+.cat-pill.active[data-cat="prob"] { background: var(--cat4-main); color: #ffffff; }
+.cat-pill.active[data-cat="prob"] .pill-count { color: var(--ink); }
+
+.cat-pill.active[data-cat="drv"] { background: var(--cat5-main); color: #ffffff; }
+.cat-pill.active[data-cat="drv"] .pill-count { color: var(--ink); }
+
+.cat-pill.active[data-cat="norm"] { background: var(--cat6-main); color: #ffffff; }
+.cat-pill.active[data-cat="norm"] .pill-count { color: var(--ink); }
+
+/* Layout Shell */
+.layout-shell {
+  max-width: 82rem;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 4.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1040px) {
+  .layout-shell.with-sidebar {
+    grid-template-columns: 19rem minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+/* Quick-Jump Comic Sidebar */
+.atlas-sidebar {
+  background: #ffffff;
+  border: var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow-md);
+  padding: 1rem;
+}
+
+@media (min-width: 1040px) {
+  .atlas-sidebar {
+    position: sticky;
+    top: 5.1rem;
+    max-height: calc(100vh - 6.2rem);
+    overflow-y: auto;
+  }
+}
+
+.sidebar-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.65rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 2.5px dashed #cbd5e1;
+}
+
+.sidebar-head h2 {
+  margin: 0;
+  font-size: 1.15rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.side-group { margin-bottom: 0.9rem; }
+.side-group-title {
+  font-family: "Fredoka", sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  padding: 0.32rem 0.6rem;
+  border-radius: 10px;
+  border: 2px solid var(--ink);
+  margin: 0 0 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.side-group[data-cat="basic"] .side-group-title { background: var(--cat1-bg); border-left: 6px solid var(--cat1-main); }
+.side-group[data-cat="diff"] .side-group-title { background: var(--cat2-bg); border-left: 6px solid var(--cat2-main); }
+.side-group[data-cat="int"] .side-group-title { background: var(--cat3-bg); border-left: 6px solid var(--cat3-main); }
+.side-group[data-cat="prob"] .side-group-title { background: var(--cat4-bg); border-left: 6px solid var(--cat4-main); }
+.side-group[data-cat="drv"] .side-group-title { background: var(--cat5-bg); border-left: 6px solid var(--cat5-main); }
+.side-group[data-cat="norm"] .side-group-title { background: var(--cat6-bg); border-left: 6px solid var(--cat6-main); }
+
+.side-links {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 0.35rem;
+  display: grid;
+  gap: 0.22rem;
+}
+
+.side-links a {
+  display: block;
+  padding: 0.28rem 0.55rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 0.86rem;
+  font-weight: 600;
+  border: 1.5px solid transparent;
+  line-height: 1.35;
+}
+
+.side-links a:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.side-links a.active-link {
+  background: #ffd166;
+  border-color: var(--ink);
+  font-weight: 700;
+}
+
+/* Hero Banner with Cartoon Mascot */
+.hero-comic {
+  background: linear-gradient(135deg, #fffdf7 0%, #fff3d6 100%);
+  border: var(--border);
+  border-radius: 24px;
+  box-shadow: var(--shadow-lg);
+  padding: 1.35rem 1.5rem;
+  margin-bottom: 1.75rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-comic[hidden] { display: none !important; }
+
+@media (min-width: 720px) {
+  .hero-comic { grid-template-columns: minmax(0, 1fr) 13.5rem; }
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #ff6b35;
+  color: #ffffff;
+  font-family: "Fredoka", sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.22rem 0.75rem;
+  border-radius: 999px;
+  border: 2px solid var(--ink);
+  box-shadow: 2px 2px 0 var(--ink);
+  margin-bottom: 0.6rem;
+  transform: rotate(-1deg);
+}
+
+.hero-comic h1 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.7rem, 3.3vw, 2.35rem);
+  line-height: 1.15;
+  color: var(--ink);
+}
+
+.speech-bubble {
+  position: relative;
+  background: #ffffff;
+  border: 2.5px solid var(--ink);
+  border-radius: 18px;
+  padding: 0.85rem 1rem;
+  box-shadow: var(--shadow-sm);
+  margin: 0.5rem 0 0.95rem;
+  font-size: 0.98rem;
+}
+
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.stat-chip {
+  background: #ffffff;
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  padding: 0.3rem 0.7rem;
+  font-family: "Fredoka", sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.mascot-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.mascot-caption {
+  margin-top: 0.35rem;
+  background: #18202c;
+  color: #ffd166;
+  font-family: "Fredoka", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.18rem 0.65rem;
+  border-radius: 999px;
+}
+
+/* Category Section Panels */
+.category-block {
+  margin-bottom: 2.25rem;
+  border: var(--border);
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.category-block[hidden] { display: none !important; }
+
+.category-banner {
+  padding: 1.1rem 1.35rem;
+  border-bottom: var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.category-block[data-cat="basic"] .category-banner { background: var(--cat1-bg); }
+.category-block[data-cat="diff"] .category-banner { background: var(--cat2-bg); }
+.category-block[data-cat="int"] .category-banner { background: var(--cat3-bg); }
+.category-block[data-cat="prob"] .category-banner { background: var(--cat4-bg); }
+.category-block[data-cat="drv"] .category-banner { background: var(--cat5-bg); }
+.category-block[data-cat="norm"] .category-banner { background: var(--cat6-bg); }
+
+.cat-banner-left {
+  display: flex;
+  align-items: center;
+  gap: 0.95rem;
+}
+
+.cat-avatar {
+  width: 3.75rem;
+  height: 3.75rem;
+  flex-shrink: 0;
+  background: #ffffff;
+  border: var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cat-title-group h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+.cat-subtitle {
+  margin: 0.2rem 0 0;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #3b4758;
+}
+
+.cat-badge-pill {
+  font-family: "Fredoka", sans-serif;
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 0.32rem 0.85rem;
+  border-radius: 999px;
+  border: 2.5px solid var(--ink);
+  color: #ffffff;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.category-block[data-cat="basic"] .cat-badge-pill { background: var(--cat1-main); }
+.category-block[data-cat="diff"] .cat-badge-pill { background: var(--cat2-main); }
+.category-block[data-cat="int"] .cat-badge-pill { background: var(--cat3-main); }
+.category-block[data-cat="prob"] .cat-badge-pill { background: var(--cat4-main); }
+.category-block[data-cat="drv"] .cat-badge-pill { background: var(--cat5-main); }
+.category-block[data-cat="norm"] .cat-badge-pill { background: var(--cat6-main); }
+
+.category-body {
+  padding: 1.2rem 1.35rem 1.4rem;
+}
+
+.sub-group-heading {
+  margin: 0 0 0.75rem;
+  font-size: 1.05rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: #f8fafc;
+  border: 2px solid var(--ink);
+  padding: 0.25rem 0.75rem;
+  border-radius: 10px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+  list-style: none;
+  margin: 0 0 1.25rem;
+  padding: 0;
+}
+
+.card-grid:last-child { margin-bottom: 0; }
+
+@media (min-width: 680px) {
+  .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.card-tile {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.72rem 0.85rem;
+  background: #fffdf9;
+  border: 2.5px solid var(--ink);
+  border-radius: 15px;
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 0.96rem;
+  line-height: 1.38;
+  box-shadow: 3px 3px 0 var(--ink);
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.15s ease;
+}
+
+.card-tile:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--ink);
+}
+
+.category-block[data-cat="basic"] .card-tile:hover { background: var(--cat1-bg); }
+.category-block[data-cat="diff"] .card-tile:hover { background: var(--cat2-bg); }
+.category-block[data-cat="int"] .card-tile:hover { background: var(--cat3-bg); }
+.category-block[data-cat="prob"] .card-tile:hover { background: var(--cat4-bg); }
+.category-block[data-cat="drv"] .card-tile:hover { background: var(--cat5-bg); }
+.category-block[data-cat="norm"] .card-tile:hover { background: var(--cat6-bg); }
+
+.tile-num {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  height: 1.75rem;
+  padding: 0 0.4rem;
+  border-radius: 9px;
+  border: 2px solid var(--ink);
+  font-family: "Fredoka", sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #ffffff;
+}
+
+.category-block[data-cat="basic"] .tile-num { background: var(--cat1-main); }
+.category-block[data-cat="diff"] .tile-num { background: var(--cat2-main); }
+.category-block[data-cat="int"] .tile-num { background: var(--cat3-main); }
+.category-block[data-cat="prob"] .tile-num { background: var(--cat4-main); }
+.category-block[data-cat="drv"] .tile-num { background: var(--cat5-main); }
+.category-block[data-cat="norm"] .tile-num { background: var(--cat6-main); }
+
+.tile-compare {
+  background: #fffbeb;
+  border-style: dashed;
+}
+
+.tile-compare .tile-num {
+  background: #ffd166;
+  color: var(--ink);
+}
+
+.review-sticker {
+  display: inline-block;
+  margin-left: 0.35rem;
+  padding: 0.08rem 0.48rem;
+  background: #ffd166;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-family: "Fredoka", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+/* Search Results Panel */
+#search-results {
+  background: #ffffff;
+  border: var(--border);
+  border-radius: 22px;
+  box-shadow: var(--shadow-lg);
+  padding: 1.25rem;
+  margin-bottom: 1.75rem;
+}
+
+#search-results h2 { margin: 0 0 0.85rem; font-size: 1.35rem; }
+
+.result-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.result-list a {
+  display: block;
+  padding: 0.8rem 1rem;
+  background: #fffdf9;
+  border: 2.5px solid var(--ink);
+  border-radius: 15px;
+  text-decoration: none;
+  color: var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+  transition: transform 0.1s ease;
+}
+
+.result-list a:hover {
+  transform: translate(-2px, -2px);
+  background: #fff4d9;
+}
+
+.result-kicker {
+  margin: 0 0 0.25rem;
+  font-family: "Fredoka", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #4b5563;
+}
+
+.result-title { font-weight: 800; font-size: 1.08rem; color: var(--ink); }
+.result-snip { margin: 0.3rem 0 0; font-size: 0.94rem; color: #374151; }
+
+/* Card Reader View */
+.view[hidden], article[hidden] { display: none !important; }
+
+.reader-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+  margin-bottom: 1rem;
+  background: #ffffff;
+  border: var(--border);
+  border-radius: 16px;
+  padding: 0.65rem 0.95rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.crumb {
+  margin: 0;
+  font-weight: 700;
+  font-size: 0.94rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.crumb a {
+  color: #1d4ed8;
+  text-decoration: none;
+  background: #eff6ff;
+  padding: 0.15rem 0.55rem;
+  border-radius: 8px;
+  border: 1.5px solid var(--ink);
+}
+
+.reader-nav-btns {
+  display: flex;
+  gap: 0.5rem;
+}
+
+article.card, article.compare {
+  background: #ffffff;
+  border: var(--border);
+  border-radius: 24px;
+  box-shadow: var(--shadow-lg);
+  padding: 1.5rem 1.45rem 1.75rem;
+  position: relative;
+  overflow: hidden;
+}
+
+article[data-cat="basic"] { border-top: 10px solid var(--cat1-main); }
+article[data-cat="diff"] { border-top: 10px solid var(--cat2-main); }
+article[data-cat="int"] { border-top: 10px solid var(--cat3-main); }
+article[data-cat="prob"] { border-top: 10px solid var(--cat4-main); }
+article[data-cat="drv"] { border-top: 10px solid var(--cat5-main); }
+article[data-cat="norm"] { border-top: 10px solid var(--cat6-main); }
+
+.card-header-flex {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.6rem;
+}
+
+.kicker {
+  display: inline-block;
+  margin: 0 0 0.45rem;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  border: 2px solid var(--ink);
+  font-family: "Fredoka", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+article[data-cat="basic"] .kicker { background: var(--cat1-bg); }
+article[data-cat="diff"] .kicker { background: var(--cat2-bg); }
+article[data-cat="int"] .kicker { background: var(--cat3-bg); }
+article[data-cat="prob"] .kicker { background: var(--cat4-bg); }
+article[data-cat="drv"] .kicker { background: var(--cat5-bg); }
+article[data-cat="norm"] .kicker { background: var(--cat6-bg); }
+
+article.card h2, article.compare h2 {
+  margin: 0 0 0.45rem;
+  font-size: clamp(1.38rem, 2.6vw, 1.75rem);
+  line-height: 1.28;
+  color: var(--ink);
+}
+
+.aliases {
+  margin: 0 0 1.15rem;
+  padding: 0.45rem 0.75rem;
+  background: #f8fafc;
+  border: 2px dashed #94a3b8;
+  border-radius: 12px;
+  font-size: 0.92rem;
+  color: #334155;
+}
+
+article h3 {
+  margin: 1.25rem 0 0.45rem;
+  display: inline-block;
+  padding: 0.18rem 0.7rem;
+  background: #ffd166;
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+article h3:first-of-type { margin-top: 0.35rem; }
+
+article p { margin: 0.45rem 0 0.65rem; }
+article ul, article ol { margin: 0.35rem 0 0.7rem 1.35rem; padding: 0; }
+article li { margin: 0.3rem 0; }
+
+.formula-box {
+  margin: 0.85rem 0;
+  padding: 0.9rem 1rem;
+  background: #f8fafc;
+  border: 2.5px solid var(--ink);
+  border-radius: 16px;
+  box-shadow: 3px 3px 0 #cbd5e1;
+  text-align: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  font-size: 1.08em;
+}
+
+svg.diagram {
+  display: block;
+  margin: 0.85rem auto;
+  max-width: 100%;
+  height: auto;
+  background: #fffdf7;
+  border: 2.5px solid var(--ink);
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Cartoon Trap Alert Box */
+.pitfall {
+  margin-top: 1.35rem;
+  padding: 0.95rem 1.1rem;
+  background: var(--warn-bg);
+  border: 3px solid var(--ink);
+  border-left: 8px solid var(--warn-border);
+  border-radius: 18px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+}
+
+.pitfall-mascot {
+  flex-shrink: 0;
+  width: 3.1rem;
+  height: 3.1rem;
+  background: #ffffff;
+  border: 2px solid var(--ink);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pitfall-body { flex: 1 1 auto; min-width: 0; }
+.pitfall-body h3 {
+  margin: 0 0 0.35rem;
+  background: #ff6b35;
+  color: #ffffff;
+}
+.pitfall-body p { margin: 0; color: var(--warn-ink); font-weight: 600; }
+
+/* Compare Grid */
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 0.85rem 0;
+}
+@media (min-width: 720px) {
+  .compare-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+  .compare-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+}
+
+.compare-col {
+  padding: 0.9rem 1rem;
+  background: #fffdf7;
+  border: 2.5px solid var(--ink);
+  border-radius: 16px;
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+.compare-col h3 {
+  margin-top: 0;
+  background: #90e0ef;
+  text-transform: none;
+  font-size: 1.05rem;
+}
+
+.see-also {
+  margin: 1.25rem 0 0;
+  padding-top: 0.85rem;
+  border-top: 2.5px dashed #cbd5e1;
+  font-size: 0.95rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.see-also a {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  background: #eff6ff;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.86rem;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.see-also a:hover { background: #ffd166; }
+
+.bottom-card-nav {
+  margin-top: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+footer.doc-foot {
+  margin-top: 2.25rem;
+  padding: 1rem 1.25rem;
+  background: #ffffff;
+  border: var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow-sm);
+  font-size: 0.92rem;
+  color: #334155;
+}
+
+:focus-visible { outline: 3px solid #ff6b35; outline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<header class="app-bar">
+  <div class="app-bar-inner">
+    <a class="brand" href="#home" aria-label="HKDSE M1 Concept Atlas Home">
+      <!-- Mini Cartoon Owl Icon -->
+      <svg width="28" height="28" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+        <circle cx="32" cy="34" r="24" fill="#3A86FF" stroke="#18202C" stroke-width="4"/>
+        <path d="M14 16 L22 24 L12 28 Z" fill="#FFD166" stroke="#18202C" stroke-width="3.5" stroke-linejoin="round"/>
+        <path d="M50 16 L42 24 L52 28 Z" fill="#FFD166" stroke="#18202C" stroke-width="3.5" stroke-linejoin="round"/>
+        <circle cx="23" cy="33" r="8.5" fill="#FFF" stroke="#18202C" stroke-width="3.5"/>
+        <circle cx="41" cy="33" r="8.5" fill="#FFF" stroke="#18202C" stroke-width="3.5"/>
+        <circle cx="24" cy="33" r="3.5" fill="#18202C"/>
+        <circle cx="40" cy="33" r="3.5" fill="#18202C"/>
+        <path d="M29 41 L35 41 L32 47 Z" fill="#FF6B35" stroke="#18202C" stroke-width="3" stroke-linejoin="round"/>
+      </svg>
+      <span>HKDSE M1 Atlas</span>
+      <span class="brand-badge">F.6 Comic Edition</span>
+    </a>
+
+    <form id="search-form" role="search" action="#">
+      <label class="visually-hidden" for="search">Search the concept atlas</label>
+      <input id="search" type="search" name="q" autocomplete="off" spellcheck="false" placeholder="Search topic, formula, or alias (e.g. Bayes, chain rule, Poisson, CI)...">
+      <button type="button" id="search-clear" class="comic-btn" hidden>Clear</button>
+    </form>
+
+    <button type="button" id="btn-random" class="comic-btn comic-btn-surprise" title="Jump to a random revision card">
+      🎲 Random Card
+    </button>
+  </div>
+</header>
+
+<nav class="cat-nav-wrap" aria-label="Curriculum categories">
+  <div class="cat-nav" id="cat-nav">
+    <button type="button" class="cat-pill active" data-cat="all">
+      <span>🌟 All Topics</span>
+      <span class="pill-count">64</span>
+    </button>
+    <button type="button" class="cat-pill" data-cat="basic">
+      <span>🚀 1. Basic Knowledge</span>
+      <span class="pill-count">11</span>
+    </button>
+    <button type="button" class="cat-pill" data-cat="diff">
+      <span>⚡ 2. Differentiation</span>
+      <span class="pill-count">17</span>
+    </button>
+    <button type="button" class="cat-pill" data-cat="int">
+      <span>🌊 3. Integration</span>
+      <span class="pill-count">11</span>
+    </button>
+    <button type="button" class="cat-pill" data-cat="prob">
+      <span>🎲 4. Probability</span>
+      <span class="pill-count">9</span>
+    </button>
+    <button type="button" class="cat-pill" data-cat="drv">
+      <span>📊 5. Discrete Random Variables</span>
+      <span class="pill-count">8</span>
+    </button>
+    <button type="button" class="cat-pill" data-cat="norm">
+      <span>🔔 6. Normal Distribution &amp; Sampling</span>
+      <span class="pill-count">8</span>
+    </button>
+  </div>
+</nav>
+
+<div class="layout-shell with-sidebar">
+  <aside class="atlas-sidebar" id="atlas-sidebar" aria-label="Quick card index">
+    <div class="sidebar-head">
+      <h2>🧭 Quick Jump</h2>
+    </div>
+    <div id="sidebar-content"></div>
+  </aside>
+
+  <main class="main-stage">
+    <!-- HOME VIEW -->
+    <section id="home" class="view view-home">
+      <div class="hero-comic">
+        <div>
+          <span class="hero-tag">🎓 Form 6 HKDSE M1 Revision Studio</span>
+          <h1>Master Calculus &amp; Statistics — Comic Style!</h1>
+          <div class="speech-bubble">
+            <strong>“Yo Form 6! Ready to ace M1?”</strong><br>
+            All <strong>56 Concept Cards</strong> and <strong>8 Compare Pages</strong> are now organized into <strong>6 color-coded mission zones</strong>. Filter by topic pill, search any alias, or hit <em>Random Card</em> for rapid-fire revision!
+          </div>
+          <div class="hero-stats">
+            <span class="stat-chip">🚀 1. Basic (11)</span>
+            <span class="stat-chip">⚡ 2. Differentiation (17)</span>
+            <span class="stat-chip">🌊 3. Integration (11)</span>
+            <span class="stat-chip">🎲 4. Probability (9)</span>
+            <span class="stat-chip">📊 5. Discrete RV (8)</span>
+            <span class="stat-chip">🔔 6. Normal Distribution &amp; Sampling (8)</span>
+          </div>
+        </div>
+
+        <!-- Custom Cartoon Mascot SVG: Professor Owl with Calculus Scroll & Die -->
+        <div class="mascot-stage" aria-hidden="true">
+          <svg width="190" height="190" viewBox="0 0 220 220" fill="none">
+            <!-- Comic Burst Backdrop -->
+            <polygon points="110,8 134,34 170,22 174,58 210,70 192,102 214,132 180,148 184,184 148,178 130,210 104,186 72,206 62,170 26,174 36,138 8,118 32,90 18,56 54,50 64,14 94,32" fill="#FFD166" stroke="#18202C" stroke-width="4" stroke-linejoin="round"/>
+            <!-- Superhero Cape -->
+            <path d="M58 132 L34 192 L186 192 L162 132 Z" fill="#FF6B35" stroke="#18202C" stroke-width="4" stroke-linejoin="round"/>
+            <!-- Owl Body -->
+            <ellipse cx="110" cy="134" rx="52" ry="56" fill="#3A86FF" stroke="#18202C" stroke-width="4"/>
+            <ellipse cx="110" cy="144" rx="34" ry="38" fill="#FFFDF7" stroke="#18202C" stroke-width="3.5"/>
+            <!-- Belly Feathers -->
+            <path d="M96 136 Q103 143 110 136 Q117 143 124 136" stroke="#18202C" stroke-width="3" stroke-linecap="round"/>
+            <path d="M92 152 Q101 160 110 152 Q119 160 128 152" stroke="#18202C" stroke-width="3" stroke-linecap="round"/>
+            <!-- Owl Head & Ears -->
+            <circle cx="110" cy="84" r="44" fill="#3A86FF" stroke="#18202C" stroke-width="4"/>
+            <path d="M68 54 L84 66 L64 76 Z" fill="#FFD166" stroke="#18202C" stroke-width="4" stroke-linejoin="round"/>
+            <path d="M152 54 L136 66 L156 76 Z" fill="#FFD166" stroke="#18202C" stroke-width="4" stroke-linejoin="round"/>
+            <!-- Graduation Cap -->
+            <polygon points="110,24 156,42 110,58 64,42" fill="#18202C" stroke="#18202C" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M148 45 L154 66" stroke="#FFBE0B" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="154" cy="68" r="4" fill="#FF6B35" stroke="#18202C" stroke-width="2"/>
+            <!-- Cool Glasses -->
+            <circle cx="92" cy="84" r="17" fill="#FFFFFF" stroke="#18202C" stroke-width="4"/>
+            <circle cx="128" cy="84" r="17" fill="#FFFFFF" stroke="#18202C" stroke-width="4"/>
+            <line x1="109" y1="84" x2="111" y2="84" stroke="#18202C" stroke-width="5"/>
+            <circle cx="95" cy="84" r="6" fill="#18202C"/>
+            <circle cx="125" cy="84" r="6" fill="#18202C"/>
+            <circle cx="97" cy="81" r="2.2" fill="#FFFFFF"/>
+            <circle cx="127" cy="81" r="2.2" fill="#FFFFFF"/>
+            <!-- Beak -->
+            <polygon points="103,97 117,97 110,109" fill="#FFBE0B" stroke="#18202C" stroke-width="3.5" stroke-linejoin="round"/>
+            <!-- Left Wing Holding Integral Scroll -->
+            <path d="M58 124 C36 128, 34 156, 58 160" fill="#2563EB" stroke="#18202C" stroke-width="4" stroke-linecap="round"/>
+            <rect x="26" y="122" width="32" height="42" rx="8" fill="#FFF3B0" stroke="#18202C" stroke-width="3.5" transform="rotate(-10 26 122)"/>
+            <text x="35" y="149" font-family="Georgia, serif" font-weight="bold" font-size="22" fill="#18202C" transform="rotate(-10 35 149)">∫dx</text>
+            <!-- Right Wing Holding Probability Die -->
+            <path d="M162 124 C184 128, 186 156, 162 160" fill="#2563EB" stroke="#18202C" stroke-width="4" stroke-linecap="round"/>
+            <rect x="164" y="124" width="30" height="30" rx="7" fill="#FFFFFF" stroke="#18202C" stroke-width="3.5" transform="rotate(12 164 124)"/>
+            <circle cx="173" cy="134" r="2.6" fill="#FF6B35"/>
+            <circle cx="184" cy="136" r="2.6" fill="#FF6B35"/>
+            <circle cx="177" cy="142" r="2.6" fill="#FF6B35"/>
+            <circle cx="170" cy="148" r="2.6" fill="#FF6B35"/>
+            <circle cx="182" cy="150" r="2.6" fill="#FF6B35"/>
+            <!-- Feet -->
+            <path d="M88 188 L82 200 M94 188 L94 201 M100 188 L104 200" stroke="#FFBE0B" stroke-width="4.5" stroke-linecap="round"/>
+            <path d="M120 188 L116 200 M126 188 L126 201 M132 188 L138 200" stroke="#FFBE0B" stroke-width="4.5" stroke-linecap="round"/>
+          </svg>
+          <span class="mascot-caption">Prof. Hoot · M1 Sidekick</span>
+        </div>
+      </div>
+
+      <div id="search-results" hidden></div>
+
+      <!-- 6 CATEGORY SECTIONS -->
+      <div id="chapter-map">
+
+        <!-- CATEGORY 1: BASIC KNOWLEDGE -->
+        <section class="category-block" data-cat="basic" id="cat-basic">
+          <div class="category-banner">
+            <div class="cat-banner-left">
+              <div class="cat-avatar" aria-hidden="true">
+                <!-- Rocket & Formula Scroll Cartoon Icon -->
+                <svg width="42" height="42" viewBox="0 0 64 64" fill="none">
+                  <path d="M32 8 C44 18, 46 34, 42 46 L22 46 C18 34, 20 18, 32 8 Z" fill="#0d9488" stroke="#18202C" stroke-width="3.5" stroke-linejoin="round"/>
+                  <path d="M22 36 L12 46 L22 46 Z" fill="#FFD166" stroke="#18202C" stroke-width="3.5" stroke-linejoin="round"/>
+                  <path d="M42 36 L52 46 L42 46 Z" fill="#FFD166" stroke="#18202C" stroke-width="3.5" stroke-linejoin="round"/>
+                  <circle cx="32" cy="27" r="6" fill="#FFF" stroke="#18202C" stroke-width="3"/>
+                  <path d="M26 48 L32 58 L38 48 Z" fill="#FFBE0B" stroke="#18202C" stroke-width="3" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="cat-title-group">
+                <h2>1. Basic Knowledge (Pre-Calculus)</h2>
+                <p class="cat-subtitle">Chapters 1–2 · Factorials, Binomial Theorem, $e$, $\ln x$, Growth &amp; Log Linearisation</p>
+              </div>
+            </div>
+            <span class="cat-badge-pill">11 Cards</span>
+          </div>
+          <div class="category-body">
+            <h3 class="sub-group-heading">📦 Chapter 1: Binomial Expansion &amp; Summation</h3>
+            <ul class="card-grid">
+              <li><a class="card-tile" href="#card-01"><span class="tile-num">01</span><span>$n!$ and $0! = 1$</span></a></li>
+              <li><a class="card-tile" href="#card-02"><span class="tile-num">02</span><span>The binomial coefficient $C^n_r$ / $n$ choose $r$</span></a></li>
+              <li><a class="card-tile" href="#card-03"><span class="tile-num">03</span><span>Summation notation ($\sum$) and its rules</span></a></li>
+              <li><a class="card-tile" href="#card-04"><span class="tile-num">04</span><span>Binomial theorem for $(a+b)^n$, $n$ a non-negative integer</span></a></li>
+              <li><a class="card-tile" href="#card-05"><span class="tile-num">05</span><span>Coefficients / general term ($T_{r+1}$) in a binomial expansion</span></a></li>
+            </ul>
+            <h3 class="sub-group-heading">📈 Chapter 2: Exponential &amp; Logarithmic Functions</h3>
+            <ul class="card-grid">
+              <li><a class="card-tile" href="#card-06"><span class="tile-num">06</span><span>The number $e$, and the graphs of $y = e^x$ and $y = e^{-x}$</span></a></li>
+              <li><a class="card-tile" href="#card-07"><span class="tile-num">07</span><span>The exponential series for $e^x$</span></a></li>
+              <li><a class="card-tile" href="#card-08"><span class="tile-num">08</span><span>$\ln x$: definition, graph, and properties</span></a></li>
+              <li><a class="card-tile" href="#card-09"><span class="tile-num">09</span><span>Equations involving $e$ and $\ln$</span></a></li>
+              <li><a class="card-tile" href="#card-10"><span class="tile-num">10</span><span>Compound interest, exponential growth and decay</span></a></li>
+              <li><a class="card-tile" href="#card-11"><span class="tile-num">11</span><span>Logarithmic transformation of $y = ka^x$ and $y = k[f(x)]^n$</span></a></li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- CATEGORY 2: DIFFERENTIATION -->
+        <section class="category-block" data-cat="diff" id="cat-diff">
+          <div class="category-banner">
+            <div class="cat-banner-left">
+              <div class="cat-avatar" aria-hidden="true">
+                <!-- Tangent Slope Rollercoaster Cartoon Icon -->
+                <svg width="42" height="42" viewBox="0 0 64 64" fill="none">
+                  <path d="M10 50 Q26 14 54 18" stroke="#4f46e5" stroke-width="4.5" stroke-linecap="round"/>
+                  <line x1="14" y1="36" x2="48" y2="14" stroke="#FF6B35" stroke-width="3.5" stroke-dasharray="5 3" stroke-linecap="round"/>
+                  <circle cx="31" cy="25" r="5.5" fill="#FFD166" stroke="#18202C" stroke-width="3"/>
+                  <polygon points="44,34 36,46 43,46 39,56 51,43 44,43" fill="#FFBE0B" stroke="#18202C" stroke-width="2.5" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="cat-title-group">
+                <h2>2. Differentiation</h2>
+                <p class="cat-subtitle">Chapters 3–5 · Limits, Derivative Rules, Tangents, Extrema, Concavity &amp; Rates of Change</p>
+              </div>
+            </div>
+            <span class="cat-badge-pill">14 Cards + 3 Compares</span>
+          </div>
+          <div class="category-body">
+            <h3 class="sub-group-heading">🔭 Chapter 3: Limits &amp; Concept of Derivative</h3>
+            <ul class="card-grid">
+              <li><a class="card-tile" href="#card-12"><span class="tile-num">12</span><span>Intuitive limit, theorems on limits, and limits at infinity</span></a></li>
+              <li><a class="card-tile" href="#card-13"><span class="tile-num">13</span><span>Meaning of the derivative (gradient / rate of change)</span></a></li>
+            </ul>
+            <h3 class="sub-group-heading">⚙️ Chapter 4: Rules of Differentiation</h3>
+            <ul class="card-grid">
+              <li><a class="card-tile" href="#card-14"><span class="tile-num">14</span><span>Differentiation of constants, powers, sums and differences</span></a></li>
+              <li><a class="card-tile" href="#card-15"><span class="tile-num">15</span><span>Product rule and quotient rule</span></a></li>
+              <li><a class="card-tile" href="#card-16"><span class="tile-num">16</span><span>Chain rule</span></a></li>
+              <li><a class="card-tile" href="#card-17"><span class="tile-num">17</span><span>Differentiation of exponential functions, including $e^{kx}$</span></a></li>
+              <li><a class="card-tile" href="#card-18"><span class="tile-num">18</span><span>Differentiation of logarithmic functions</span></a></li>
+              <li><a class="card-tile" href="#card-19"><span class="tile-num">19</span><span>Second derivative</span></a></li>
+            </ul>
+            <h3 class="sub-group-heading">🎢 Chapter 5: Applications of Differentiation</h3>
+            <ul class="card-grid">
+              <li><a class="card-tile" href="#card-20"><span class="tile-num">20</span><span>Equation of a tangent</span></a></li>
+              <li><a class="card-tile" href="#card-21"><span class="tile-num">21</span><span>Increasing and decreasing functions</span></a></li>
+              <li><a class="card-tile" href="#card-22"><span class="tile-num">22</span><span>Local extrema: first derivative test</span></a></li>
+              <li><a class="card-tile" href="#card-23"><span class="tile-num">23</span><span>Concavity and the second derivative test</span></a></li>
+              <li><a class="card-tile" href="#card-24"><span class="tile-num">24</span><span>Global extrema and optimisation</span></a></li>
+              <li><a class="card-tile" href="#card-25"><span class="tile-num">25</span><span>Rates of change, including velocity and acceleration</span></a></li>
+            </ul>
+            <h3 class="sub-group-heading">⚔️ Side-by-Side Showdowns (Differentiation)</h3>
+            <ul class="card-grid">
+              <li><a class="card-tile tile-compare" href="#compare-a"><span class="tile-num">VS A</span><span>Product rule vs quotient rule vs chain rule</span></a></li>
+              <li><a class="card-tile tile-compare" href="#compare-b"><span class="tile-num">VS B</span><span>First derivative test vs second derivative test</span></a></li>
+              <li><a class="card-tile tile-compare" href="#compare-c"><span class="tile-num">VS C</span><span>Local vs global extrema</span></a></li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- CATEGORY 3: INTEGRATION -->
+        <section class="category-block" data-cat="int" id="cat-int">
+          <div class="category-banner">
+            <div class="cat-banner-left">
+              <div class="cat-avatar" aria-hidden="true">
+                <!-- Area Under Curve Blocks Cartoon Icon -->
+                <svg width="42" height="42" viewBox="0 0 64 64" fill="none">
+                  <path d="M12 48 L12 32 C22 16, 40 16, 52 28 L52 48 Z" fill="#FBBF24" stroke="#18202C" stroke-width="3.5" stroke-linejoin="round"/>
+                  <line x1="25" y1="21" x2="25" y2="48" stroke="#18202C" stroke-width="2.5"/>
+                  <line x1="39" y1="21" x2="39" y2="48" stroke="#18202C" stroke-width="2.5"/>
+                  <line x1="8" y1="48" x2="56" y2="48" stroke="#18202C" stroke-width="3.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="cat-title-group">
+                <h2>3. Integration</h2>
+                <p class="cat-subtitle">Chapters 6–8 · Indefinite &amp; Definite Integrals, Substitution, Area &amp; Trapezoidal Rule</p>
+              </div>
+            </div>
+            <span class="cat-badge-pill">9 Cards + 2 Compares</span>
+          </div>
+          <div class="category-body">
+            <h3 class="sub-group-heading">🧩 Chapter 6: Indefinite Integration</h3>
+            <ul class="card-grid">
+              <li><a class="card-tile" href="#card-26"><span class="tile-num">26</span><span>Indefinite integral as a family of primitives, and $+C$</span></a></li>
+              <li><a class="card-tile" href="#card-27"><span class="tile-num">27</span><span>Basic integrals of algebraic and exponential functions, and properties</span></a></li>
+              <li><a class="card-tile" href="#card-28"><span class="tile-num">28</span><span>Integration by substitution (indefinite)</span></a></li>
+              <li><a class="card-tile" href="#card-29"><span class="tile-num">29</span><span>Geometrical and daily-life use of indefinite integrals (meaning of $+C$)</span></a></li>
+            </ul>
+            <h3 class="sub-group-heading">📐 Chapters 7–8: Definite Integrals, Area &amp; Trapezoidal Rule</h3>
+            <ul class="card-grid">
+              <li><a class="card-tile" href="#card-30"><span class="tile-num">30</span><span>Definite integral; Fundamental Theorem of Calculus; properties</span></a></li>
+              <li><a class="card-tile" href="#card-31"><span class="tile-num">31</span><span>Evaluating a definite integral by substitution</span></a></li>
+              <li><a class="card-tile" href="#card-32"><span class="tile-num">32</span><span>Area of a plane figure (curve and the $x$-axis only)</span></a></li>
+              <li><a class="card-tile" href="#card-33"><span class="tile-num">33</span><span>Definite integrals in rate-of-change / daily-life problems</span></a></li>
+              <li><a class="card-tile" href="#card-34"><span class="tile-num">34</span><span>Trapezoidal rule: estimate, strips, over- and under-estimate</span></a></li>
+            </ul>
+            <h3 class="sub-group-heading">⚔️ Side-by-Side Showdowns (Integration)</h3>
+            <ul class="card-grid">
+              <li><a class="card-tile tile-compare" href="#compare-d"><span class="tile-num">VS D</span><span>Indefinite vs definite integrals, and where $+C$ goes</span></a></li>
+              <li><a class="card-tile tile-compare" href="#compare-e"><span class="tile-num">VS E</span><span>Exact integral vs trapezoidal estimate</span></a></li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- CATEGORY 4: PROBABILITY -->
+        <section class="category-block" data-cat="prob" id="cat-prob">
+          <div class="category-banner">
+            <div class="cat-banner-left">
+              <div class="cat-avatar" aria-hidden="true">
+                <!-- Cartoon Dice & Tree Branches Icon -->
+                <svg width="42" height="42" viewBox="0 0 64 64" fill="none">
+                  <rect x="10" y="12" width="24" height="24" rx="6" fill="#e11d48" stroke="#18202C" stroke-width="3.5"/>
+                  <circle cx="17" cy="19" r="2.3" fill="#FFF"/>
+                  <circle cx="27" cy="29" r="2.3" fill="#FFF"/>
+                  <circle cx="22" cy="24" r="2.3" fill="#FFF"/>
+                  <path d="M34 26 L46 18 M34 26 L46 36 M46 36 L55 30 M46 36 L55 44" stroke="#18202C" stroke-width="3" stroke-linecap="round"/>
+                  <circle cx="46" cy="18" r="3.5" fill="#FFD166" stroke="#18202C" stroke-width="2.5"/>
+                  <circle cx="55" cy="30" r="3.5" fill="#FFD166" stroke="#18202C" stroke-width="2.5"/>
+                  <circle cx="55" cy="44" r="3.5" fill="#FFD166" stroke="#18202C" stroke-width="2.5"/>
+                </svg>
+              </div>
+              <div class="cat-title-group">
+                <h2>4. Probability</h2>
+                <p class="cat-subtitle">Chapters 9–10 · Set Laws, Conditional Probability, Independence, Total Probability &amp; Bayes’ Theorem</p>
+              </div>
+            </div>
+            <span class="cat-badge-pill">8 Cards + 1 Compare</span>
+          </div>
+          <div class="category-body">
+            <h3 class="sub-group-heading">🎒 Chapter 9: Compulsory Part Review</h3>
+            <ul class="card-grid">
+              <li><a class="card-tile" href="#card-35"><span class="tile-num">35</span><span>Statistical diagrams; mean, variance &amp; SD of a data set <span class="review-sticker">Review</span></span></a></li>
+              <li><a class="card-tile" href="#card-36"><span class="tile-num">36</span><span>Set notation; addition and multiplication laws of probability <span class="review-sticker">Review</span></span></a></li>
+            </ul>
+            <h3 class="sub-group-heading">🌳 Chapter 10: Conditional Probability &amp; Bayes’ Theorem</h3>
+            <ul class="card-grid">
+              <li><a class="card-tile" href="#card-37"><span class="tile-num">37</span><span>Conditional probability $P(A \mid B)$</span></a></li>
+              <li><a class="card-tile" href="#card-38"><span class="tile-num">38</span><span>Multiplication law and independent events</span></a></li>
+              <li><a class="card-tile" href="#card-39"><span class="tile-num">39</span><span>Rule of total probability (with a tree)</span></a></li>
+              <li><a class="card-tile" href="#card-40"><span class="tile-num">40</span><span>Bayes’ theorem</span></a></li>
+              <li><a class="card-tile" href="#card-41"><span class="tile-num">41</span><span>Discrete random variable and its possible values</span></a></li>
+              <li><a class="card-tile" href="#card-42"><span class="tile-num">42</span><span>Discrete probability distribution ($\sum P = 1$; table, graph or formula)</span></a></li>
+            </ul>
+            <h3 class="sub-group-heading">⚔️ Side-by-Side Showdown (Probability)</h3>
+            <ul class="card-grid">
+              <li><a class="card-tile tile-compare" href="#compare-f"><span class="tile-num">VS F</span><span>$P(A \mid B)$ vs $P(B \mid A)$</span></a></li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- CATEGORY 5: DISCRETE RANDOM VARIABLES -->
+        <section class="category-block" data-cat="drv" id="cat-drv">
+          <div class="category-banner">
+            <div class="cat-banner-left">
+              <div class="cat-avatar" aria-hidden="true">
+                <!-- Cartoon Bar Chart & Lightning/Dice Counter Icon -->
+                <svg width="42" height="42" viewBox="0 0 64 64" fill="none">
+                  <rect x="10" y="34" width="10" height="18" rx="3" fill="#C084FC" stroke="#18202C" stroke-width="3"/>
+                  <rect x="24" y="20" width="10" height="32" rx="3" fill="#7c3aed" stroke="#18202C" stroke-width="3"/>
+                  <rect x="38" y="28" width="10" height="24" rx="3" fill="#A855F7" stroke="#18202C" stroke-width="3"/>
+                  <line x1="6" y1="52" x2="54" y2="52" stroke="#18202C" stroke-width="3.5" stroke-linecap="round"/>
+                  <polygon points="50,8 42,20 49,20 45,30 57,17 50,17" fill="#FFBE0B" stroke="#18202C" stroke-width="2.5" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="cat-title-group">
+                <h2>5. Discrete Random Variables</h2>
+                <p class="cat-subtitle">Chapters 11–12 · $E(X)$, $\mathrm{Var}(X)$, Linear Rules $aX+b$, Bernoulli, Binomial $B(n,p)$ &amp; Poisson $\mathrm{Po}(\lambda)$</p>
+              </div>
+            </div>
+            <span class="cat-badge-pill">7 Cards + 1 Compare</span>
+          </div>
+          <div class="category-body">
+            <h3 class="sub-group-heading">🎯 Chapters 11–12: Expectation, Variance, Binomial &amp; Poisson</h3>
+            <ul class="card-grid">
+              <li><a class="card-tile" href="#card-43"><span class="tile-num">43</span><span>$E(X)$, $\mathrm{Var}(X)$ and standard deviation for a discrete variable</span></a></li>
+              <li><a class="card-tile" href="#card-44"><span class="tile-num">44</span><span>Useful results on expectation and variance (including $aX+b$)</span></a></li>
+              <li><a class="card-tile" href="#card-45"><span class="tile-num">45</span><span>Bernoulli distribution</span></a></li>
+              <li><a class="card-tile" href="#card-46"><span class="tile-num">46</span><span>Binomial distribution: conditions, probabilities, mean and variance</span></a></li>
+              <li><a class="card-tile" href="#card-47"><span class="tile-num">47</span><span>Poisson distribution: conditions, probabilities, mean and variance</span></a></li>
+              <li><a class="card-tile" href="#card-48"><span class="tile-num">48</span><span>Applications of the binomial and Poisson distributions</span></a></li>
+              <li><a class="card-tile" href="#card-49"><span class="tile-num">49</span><span>Continuous random variable; probability as an area under a density curve</span></a></li>
+            </ul>
+            <h3 class="sub-group-heading">⚔️ Side-by-Side Showdown (Discrete Distributions)</h3>
+            <ul class="card-grid">
+              <li><a class="card-tile tile-compare" href="#compare-g"><span class="tile-num">VS G</span><span>Binomial vs Poisson as separate models</span></a></li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- CATEGORY 6: NORMAL DISTRIBUTION AND SAMPLING -->
+        <section class="category-block" data-cat="norm" id="cat-norm">
+          <div class="category-banner">
+            <div class="cat-banner-left">
+              <div class="cat-avatar" aria-hidden="true">
+                <!-- Cartoon Bell Curve & Magnifying Glass Icon -->
+                <svg width="42" height="42" viewBox="0 0 64 64" fill="none">
+                  <path d="M6 48 C16 48, 20 14, 30 14 C40 14, 44 48, 54 48 Z" fill="#38BDF8" stroke="#18202C" stroke-width="3.5" stroke-linejoin="round"/>
+                  <line x1="4" y1="48" x2="56" y2="48" stroke="#18202C" stroke-width="3.5" stroke-linecap="round"/>
+                  <circle cx="44" cy="24" r="10" fill="#FFFFFF" stroke="#18202C" stroke-width="3.5"/>
+                  <line x1="51" y1="31" x2="59" y2="39" stroke="#18202C" stroke-width="4" stroke-linecap="round"/>
+                  <text x="40" y="28" font-family="Georgia, serif" font-weight="bold" font-size="13" fill="#0284c7">μ</text>
+                </svg>
+              </div>
+              <div class="cat-title-group">
+                <h2>6. Normal Distribution &amp; Sampling</h2>
+                <p class="cat-subtitle">Chapters 13–14 · Normal $N(\mu, \sigma^2)$, $Z$-Score, CLT, Unbiased Estimators &amp; Confidence Intervals</p>
+              </div>
+            </div>
+            <span class="cat-badge-pill">7 Cards + 1 Compare</span>
+          </div>
+          <div class="category-body">
+            <h3 class="sub-group-heading">🔔 Chapters 13–14: Normal Curves, Sampling &amp; Estimation</h3>
+            <ul class="card-grid">
+              <li><a class="card-tile" href="#card-50"><span class="tile-num">50</span><span>Normal distribution: shape, $\mu$, $\sigma$, and properties</span></a></li>
+              <li><a class="card-tile" href="#card-51"><span class="tile-num">51</span><span>Standardising to $Z$ and using a standard normal table</span></a></li>
+              <li><a class="card-tile" href="#card-52"><span class="tile-num">52</span><span>Applications of the normal distribution</span></a></li>
+              <li><a class="card-tile" href="#card-53"><span class="tile-num">53</span><span>Population parameter vs sample statistic (Greek vs $\bar{x}, s^2$)</span></a></li>
+              <li><a class="card-tile" href="#card-54"><span class="tile-num">54</span><span>Sampling distribution of the sample mean (normal parent &amp; CLT)</span></a></li>
+              <li><a class="card-tile" href="#card-55"><span class="tile-num">55</span><span>Point estimators and unbiased estimators: $\bar{x} \to \mu$; $s^2 \to \sigma^2$</span></a></li>
+              <li><a class="card-tile" href="#card-56"><span class="tile-num">56</span><span>Confidence interval for a population mean, and confidence level</span></a></li>
+            </ul>
+            <h3 class="sub-group-heading">⚔️ Side-by-Side Showdown (Estimation)</h3>
+            <ul class="card-grid">
+              <li><a class="card-tile tile-compare" href="#compare-h"><span class="tile-num">VS H</span><span>Point estimate vs confidence interval</span></a></li>
+            </ul>
+          </div>
+        </section>
+
+      </div>
+    </section>
+
+    <!-- READER VIEW -->
+    <section id="reader" class="view view-reader" hidden>
+      <div class="reader-toolbar">
+        <p class="crumb" id="crumb"><a href="#home">🏠 Atlas Home</a></p>
+        <div class="reader-nav-btns">
+          <button type="button" class="comic-btn" id="btn-prev">⬅️ Prev</button>
+          <button type="button" class="comic-btn" id="btn-next">Next ➡️</button>
+        </div>
+      </div>
+
+      <div id="articles-container">
+        <!-- ==================== 1. BASIC KNOWLEDGE ==================== -->
+        <article class="card" id="card-01" data-cat="basic">
+          <p class="kicker">🚀 Basic Knowledge · Chapter 1</p>
+          <h2>1. $n!$ and $0! = 1$</h2>
+          <p class="aliases"><strong>Search aliases:</strong> factorial, $n$ factorial, zero factorial, $0!$, $n!$</p>
+          <h3>Meaning</h3>
+          <p>For a non-negative integer $n$, $n!$ ($n$ factorial) is the product of the positive integers from $n$ down to $1$. It counts the number of ways to arrange $n$ distinct objects in a line, and it is the building block of the binomial coefficient.</p>
+          <h3>When it applies / conditions</h3>
+          <p>Here $n$ is a non-negative integer. The value $0!$ is defined; it is not found by ‘multiplying down from zero’.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$n! = n(n-1)\cdots 2\cdot 1 \quad (\text{for } n \ge 1), \qquad 0! = 1.$$</div>
+          <p>The recurrence $n! = n(n-1)!$ for $n \ge 1$ is consistent with $0! = 1$, because $1! = 1 \cdot 0!$. The definition $0! = 1$ is also what makes $C^n_0 = \frac{n!}{0!\,n!} = 1$.</p>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>Do not leave $0!$ undefined, and do not write $0! = 0$. The empty product is taken to be $1$, and this definition is needed for the binomial coefficient when $r = 0$.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-02">Card 2 · $C^n_r$</a> <a href="#card-04">Card 4 · Binomial theorem</a> <a href="#card-05">Card 5 · General term</a></p>
+        </article>
+
+        <article class="card" id="card-02" data-cat="basic">
+          <p class="kicker">🚀 Basic Knowledge · Chapter 1</p>
+          <h2>2. The binomial coefficient $C^n_r$ / $n$ choose $r$</h2>
+          <p class="aliases"><strong>Search aliases:</strong> binomial coefficient, $n$ choose $r$, $C^n_r$, C(n,r), combinations, selections without regard to order</p>
+          <h3>Meaning</h3>
+          <p>$C^n_r$, read ‘$n$ choose $r$’ (also written $C(n,r)$), is the number of ways to choose $r$ objects from $n$ distinct objects when order does not matter.</p>
+          <h3>When it applies / conditions</h3>
+          <p>$n$ and $r$ are integers with $0 \le r \le n$. The usual factorial formula assumes those bounds.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$C^n_r = \frac{n!}{r!(n-r)!}$$</div>
+          <div class="formula-box">$$C^n_r = C^n_{n-r}, \qquad C^n_0 = C^n_n = 1, \qquad C^n_1 = n.$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>$C^n_r$ does not count arrangements that depend on order. A frequent slip is to forget that $0! = 1$ when $r = 0$ or $r = n$.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-01">Card 1 · $n!$</a> <a href="#card-04">Card 4 · Binomial theorem</a> <a href="#card-05">Card 5 · General term</a> <a href="#card-46">Card 46 · Binomial distribution</a></p>
+        </article>
+
+        <article class="card" id="card-03" data-cat="basic">
+          <p class="kicker">🚀 Basic Knowledge · Chapter 1</p>
+          <h2>3. Summation notation and its rules</h2>
+          <p class="aliases"><strong>Search aliases:</strong> sigma notation, summation, $\sum$, index of summation, sum</p>
+          <h3>Meaning</h3>
+          <p>The symbol $\sum$ is a compact way of writing a sum of terms that follow a pattern, once the index and the lower and upper limits are given.</p>
+          <h3>When it applies / conditions</h3>
+          <p>Always attend to the index of summation and to the lower and upper limits. The letter used for the index is a dummy variable: changing the letter does not change the sum.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$\sum_{i=1}^n a_i = a_1 + a_2 + \cdots + a_n$$</div>
+          <div class="formula-box">$$\sum_{i=1}^n c = nc, \qquad \sum_{i=1}^n (ca_i) = c\sum_{i=1}^n a_i, \qquad \sum_{i=1}^n (a_i \pm b_i) = \sum_{i=1}^n a_i \pm \sum_{i=1}^n b_i$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>Do not change the limits without adjusting the general term to match. Do not confuse the dummy index with a letter that appears as a constant in the term.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-04">Card 4 · Binomial theorem</a> <a href="#card-05">Card 5 · General term</a> <a href="#card-07">Card 7 · Exponential series</a></p>
+        </article>
+
+        <article class="card" id="card-04" data-cat="basic">
+          <p class="kicker">🚀 Basic Knowledge · Chapter 1</p>
+          <h2>4. Binomial theorem for $(a+b)^n$, $n$ a non-negative integer</h2>
+          <p class="aliases"><strong>Search aliases:</strong> binomial theorem, binomial expansion, expanding $(a+b)^n$</p>
+          <h3>Meaning</h3>
+          <p>The binomial theorem gives the full expansion of a power of a two-term sum when that power is a non-negative integer.</p>
+          <h3>When it applies / conditions</h3>
+          <p>The exponent $n$ is a non-negative integer. Expansion of trinomials, and applications to numerical approximation, are not required in Module 1.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$(a+b)^n = \sum_{r=0}^n C^n_r a^{n-r} b^r = C^n_0 a^n + C^n_1 a^{n-1}b + \cdots + C^n_n b^n.$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>Every term must have the powers of $a$ and $b$ adding to $n$. Do not apply this unit to $(a+b+c)^n$ (trinomials are not required).</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-02">Card 2 · $C^n_r$</a> <a href="#card-03">Card 3 · Summation</a> <a href="#card-05">Card 5 · General term</a></p>
+        </article>
+
+        <article class="card" id="card-05" data-cat="basic">
+          <p class="kicker">🚀 Basic Knowledge · Chapter 1</p>
+          <h2>5. Coefficients / general term in a binomial expansion</h2>
+          <p class="aliases"><strong>Search aliases:</strong> general term, $T_{r+1}$, coefficient of a power, terms in a binomial expansion</p>
+          <h3>Meaning</h3>
+          <p>Any required term or coefficient in the expansion of $(a+b)^n$ can be read from a general-term formula, without writing the whole expansion.</p>
+          <h3>When it applies / conditions</h3>
+          <p>$n$ is a non-negative integer and $r = 0, 1, \ldots, n$. Finding the greatest term or the greatest coefficient is not required in Module 1.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$T_{r+1} = C^n_r a^{n-r} b^r \quad (\text{the } (r+1)\text{th term})$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>$T_{r+1}$ is the term in which the power of $b$ is $r$; it is not always ‘the $r$th term’. If both $a$ and $b$ involve the same variable, a coefficient of $x^k$ may come from more than one contribution.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-02">Card 2 · $C^n_r$</a> <a href="#card-04">Card 4 · Binomial theorem</a></p>
+        </article>
+
+        <article class="card" id="card-06" data-cat="basic">
+          <p class="kicker">🚀 Basic Knowledge · Chapter 2</p>
+          <h2>6. The number $e$, and the graphs of $y = e^x$ and $y = e^{-x}$</h2>
+          <p class="aliases"><strong>Search aliases:</strong> the number $e$, base $e$, exponential graphs, $y = e^x$, $y = e^{-x}$</p>
+          <h3>Meaning</h3>
+          <p>The number $e$ is a special positive constant, used as the base of the natural exponential function and of the natural logarithm. The graphs of $y = e^x$ and $y = e^{-x}$ are the basic exponential graphs in this chapter.</p>
+          <h3>When it applies / conditions</h3>
+          <p>$e$ is introduced through a limit. A formal proof that the limit exists is not needed in Module 1. The two graphs are defined for all real $x$.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$e = \lim_{n \to \infty} \left(1 + \frac{1}{n}\right)^n \approx 2.718\ldots$$</div>
+          <svg class="diagram" viewBox="0 0 340 180" width="340" height="180" role="img" aria-label="Sketch of y equals e to the x and y equals e to the minus x.">
+            <line x1="24" y1="115" x2="320" y2="115" stroke="#18202c" stroke-width="2"/>
+            <line x1="170" y1="12" x2="170" y2="168" stroke="#18202c" stroke-width="2"/>
+            <path d="M40 112 C 110 110, 148 96, 170 80 C 194 55, 232 25, 305 15" fill="none" stroke="#3a86ff" stroke-width="3"/>
+            <path d="M35 15 C 108 25, 146 55, 170 80 C 192 96, 230 110, 300 112" fill="none" stroke="#ff6b35" stroke-width="3" stroke-dasharray="6 4"/>
+            <text x="275" y="34" font-size="14" font-weight="bold" font-family="Plus Jakarta Sans, sans-serif" fill="#3a86ff">y = eˣ</text>
+            <text x="32" y="34" font-size="14" font-weight="bold" font-family="Plus Jakarta Sans, sans-serif" fill="#ff6b35">y = e⁻ˣ</text>
+            <circle cx="170" cy="80" r="4" fill="#18202c"/>
+            <text x="178" y="84" font-size="12" font-weight="bold" font-family="Plus Jakarta Sans, sans-serif" fill="#18202c">(0, 1)</text>
+          </svg>
+          <p>Both graphs lie above the $x$-axis, have domain $(-\infty, \infty)$ and range $(0, \infty)$, and pass through $(0, 1)$. They are reflections of each other in the $y$-axis.</p>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>$e$ is not an integer, and it is not $2.7$ exactly. Neither graph meets the $x$-axis: do not draw an $x$-intercept.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-07">Card 7 · Exponential series</a> <a href="#card-08">Card 8 · $\ln x$</a> <a href="#card-17">Card 17 · Differentiating exponentials</a></p>
+        </article>
+
+        <article class="card" id="card-07" data-cat="basic">
+          <p class="kicker">🚀 Basic Knowledge · Chapter 2</p>
+          <h2>7. The exponential series for $e^x$</h2>
+          <p class="aliases"><strong>Search aliases:</strong> exponential series, series for $e^x$, infinite series for $e$</p>
+          <h3>Meaning</h3>
+          <p>For every real number $x$, the value $e^x$ can be written as an infinite series of powers of $x$.</p>
+          <h3>When it applies / conditions</h3>
+          <p>$x$ is a real number. This is an infinite series, not a finite binomial expansion of the Chapter 1 type.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + \cdots = \sum_{k=0}^\infty \frac{x^k}{k!}$$</div>
+          <div class="formula-box">$$e = 1 + 1 + \frac{1}{2!} + \frac{1}{3!} + \cdots$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>A truncated series is an approximation, not an exact value, unless the question asks only for terms up to a stated power. The term in $x^k$ has $k!$ in the denominator, not $k$.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-01">Card 1 · $n!$</a> <a href="#card-03">Card 3 · Summation</a> <a href="#card-06">Card 6 · The number $e$</a></p>
+        </article>
+
+        <article class="card" id="card-08" data-cat="basic">
+          <p class="kicker">🚀 Basic Knowledge · Chapter 2</p>
+          <h2>8. $\ln x$: definition, graph, and properties</h2>
+          <p class="aliases"><strong>Search aliases:</strong> natural logarithm, $\ln x$, $\log_e x$, natural logarithmic function</p>
+          <h3>Meaning</h3>
+          <p>$\ln x$ is the logarithm of $x$ to the base $e$: the power to which $e$ must be raised to give $x$.</p>
+          <h3>When it applies / conditions</h3>
+          <p>$\ln x$ is defined only for $x &gt; 0$. The usual properties require $M &gt; 0$ and $N &gt; 0$.</p>
+          <h3>Key formula or diagram</h3>
+          <p>If $M = e^N$, then $N = \ln M$. Hence $e^{\ln M} = M$ ($M &gt; 0$) and $\ln(e^N) = N$.</p>
+          <div class="formula-box">$$\ln(MN) = \ln M + \ln N, \quad \ln\frac{M}{N} = \ln M - \ln N, \quad \ln(M^k) = k\ln M, \quad \ln 1 = 0, \quad \ln e = 1$$</div>
+          <p>The graph of $y = \ln x$ has domain $(0, \infty)$ and range $(-\infty, \infty)$, cuts the $x$-axis at $(1, 0)$, and is strictly increasing.</p>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>Never take the natural logarithm of a non-positive number. $\ln(a+b)$ is NOT $\ln a + \ln b$.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-06">Card 6 · The number $e$</a> <a href="#card-09">Card 9 · Equations</a> <a href="#card-11">Card 11 · Log transformation</a> <a href="#card-18">Card 18 · Differentiating logarithms</a></p>
+        </article>
+
+        <article class="card" id="card-09" data-cat="basic">
+          <p class="kicker">🚀 Basic Knowledge · Chapter 2</p>
+          <h2>9. Equations involving $e$ and $\ln$</h2>
+          <p class="aliases"><strong>Search aliases:</strong> exponential equations, logarithmic equations, solving with $\ln$, equations with $e$</p>
+          <h3>Meaning</h3>
+          <p>Equations that contain $e$ or $\ln$ are solved by using the fact that the two functions are inverses, together with the properties of $\ln$.</p>
+          <h3>When it applies / conditions</h3>
+          <p>After taking logarithms, every logarithm must still have a positive argument. Always check candidate solutions in the original equation.</p>
+          <h3>Key formula or diagram</h3>
+          <ul>
+            <li>Take $\ln$ of both sides when both sides are strictly positive.</li>
+            <li>Rewrite equations in the form $e^{(\cdots)} = \cdots$ or $\ln(\cdots) = \cdots$.</li>
+            <li>If $\ln A = \ln B$ and $A, B &gt; 0$, then $A = B$.</li>
+            <li>Use $e^{\ln u} = u$ ($u &gt; 0$) and $\ln(e^v) = v$.</li>
+          </ul>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>Taking $\ln$ of both sides is valid only when both sides are positive. Always substitute solutions back, and reject any value that makes an argument of $\ln$ non-positive.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-06">Card 6 · The number $e$</a> <a href="#card-08">Card 8 · $\ln x$</a> <a href="#card-10">Card 10 · Growth and decay</a></p>
+        </article>
+
+        <article class="card" id="card-10" data-cat="basic">
+          <p class="kicker">🚀 Basic Knowledge · Chapter 2</p>
+          <h2>10. Compound interest, exponential growth and decay</h2>
+          <p class="aliases"><strong>Search aliases:</strong> compound interest, interest compounded continuously, exponential growth, exponential decay, half-life</p>
+          <h3>Meaning</h3>
+          <p>A quantity multiplied by a constant factor in each equal period follows an exponential model. Compound interest is the financial form; exponential growth and decay are the scientific form.</p>
+          <h3>When it applies / conditions</h3>
+          <p>Read the rate and compounding period carefully, including whether the rate is a percentage or a decimal.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$A = P\left(1 + \frac{r}{100k}\right)^{kt} \quad (\text{compounded } k \text{ times/year}), \qquad A = Pe^{rt} \quad (\text{continuous compounding})$$</div>
+          <div class="formula-box">$$Q = Q_0 e^{kt} \quad (k &gt; 0 \text{ for growth}, \; k &lt; 0 \text{ for decay})$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>Do not put a raw percentage into $e^{rt}$ as if it were a decimal (e.g., $5\%$ means $r = 0.05$). ‘Compounded continuously’ is not the same as ‘compounded once a year’.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-06">Card 6 · The number $e$</a> <a href="#card-09">Card 9 · Equations</a> <a href="#card-11">Card 11 · Log transformation</a></p>
+        </article>
+
+        <article class="card" id="card-11" data-cat="basic">
+          <p class="kicker">🚀 Basic Knowledge · Chapter 2</p>
+          <h2>11. Logarithmic transformation of $y = ka^x$ and $y = k[f(x)]^n$</h2>
+          <p class="aliases"><strong>Search aliases:</strong> log transformation, linearise, model of an exponential function, model of a power function</p>
+          <h3>Meaning</h3>
+          <p>Taking logarithms turns an exponential model or a power model into a linear relation, so a straight-line graph can be used to find the unknown constants.</p>
+          <h3>When it applies / conditions</h3>
+          <p>Requires $y &gt; 0$, $k &gt; 0$, and $f(x) &gt; 0$.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$y = ka^x \implies \ln y = \ln k + x\ln a \quad (\text{plot } \ln y \text{ vs } x: \text{ slope } = \ln a,\; \text{intercept } = \ln k)$$</div>
+          <div class="formula-box">$$y = k[f(x)]^n \implies \ln y = \ln k + n\ln f(x) \quad (\text{plot } \ln y \text{ vs } \ln f(x): \text{ slope } = n,\; \text{intercept } = \ln k)$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>The vertical intercept is $\ln k$, NOT $k$; convert back using $k = e^{\text{intercept}}$. Check whether the graph axes use $\ln$ or $\log_{10}$!</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-08">Card 8 · $\ln x$</a> <a href="#card-09">Card 9 · Equations</a> <a href="#card-10">Card 10 · Growth and decay</a></p>
+        </article>
+
+        <!-- ==================== 2. DIFFERENTIATION ==================== -->
+        <article class="card" id="card-12" data-cat="diff">
+          <p class="kicker">⚡ Differentiation · Chapter 3</p>
+          <h2>12. Intuitive limit, theorems on limits, and limits at infinity</h2>
+          <p class="aliases"><strong>Search aliases:</strong> limit, $\lim$, theorems on limits, limits at infinity, end behaviour</p>
+          <h3>Meaning</h3>
+          <p>The limit of $f(x)$ as $x \to a$ is the single value that $f(x)$ approaches from both sides. A limit at infinity describes the end behaviour as $x \to \pm\infty$.</p>
+          <h3>When it applies / conditions</h3>
+          <p>$f(a)$ need not exist (a hole in the graph is allowed). Divide numerator and denominator by the highest power of $x$ for rational limits as $x \to \infty$.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$\lim_{x \to a} [f(x) \pm g(x)] = \lim_{x \to a} f(x) \pm \lim_{x \to a} g(x), \qquad \lim_{x \to \infty} \frac{1}{x^p} = 0 \quad (p &gt; 0)$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>If a denominator approaches zero, do not immediately say the limit does not exist — factor and cancel common factors first! Do not treat $\infty$ as an ordinary number.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-06">Card 6 · The number $e$</a> <a href="#card-13">Card 13 · Meaning of the derivative</a></p>
+        </article>
+
+        <article class="card" id="card-13" data-cat="diff">
+          <p class="kicker">⚡ Differentiation · Chapter 3</p>
+          <h2>13. Meaning of the derivative (gradient / rate of change)</h2>
+          <p class="aliases"><strong>Search aliases:</strong> derivative, slope of a tangent, gradient of a curve, instantaneous rate of change, $f'(x)$, $\frac{dy}{dx}$</p>
+          <h3>Meaning</h3>
+          <p>The derivative of $y = f(x)$ at a point is the slope of the tangent to the curve at that point, and it is also the instantaneous rate of change of $y$ with respect to $x$.</p>
+          <h3>When it applies / conditions</h3>
+          <p>Recognise the limit definition and its two meanings. Routine first-principles differentiation is not examined in Module 1.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>The derivative at a point is an instantaneous rate, not an average rate over an interval. Use differentiation rules rather than first principles.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-12">Card 12 · Limits</a> <a href="#card-14">Card 14 · Basic rules</a> <a href="#card-20">Card 20 · Tangents</a> <a href="#card-25">Card 25 · Rates of change</a></p>
+        </article>
+
+        <article class="card" id="card-14" data-cat="diff">
+          <p class="kicker">⚡ Differentiation · Chapter 4</p>
+          <h2>14. Differentiation of constants, powers, sums and differences</h2>
+          <p class="aliases"><strong>Search aliases:</strong> basic rules of differentiation, power rule, constant rule, term-by-term differentiation</p>
+          <h3>Meaning</h3>
+          <p>Short rules let you differentiate a constant, a power of $x$, a constant multiple, and a sum or difference term by term.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$\frac{d}{dx}(k) = 0, \qquad \frac{d}{dx}(x^n) = nx^{n-1}, \qquad \frac{d}{dx}[kf(x)] = kf'(x), \qquad \frac{d}{dx}[f(x) \pm g(x)] = f'(x) \pm g'(x)$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>The derivative of a constant (like $e^2$ or $\ln 5$) is $0$, NOT the constant itself! Rewrite roots and reciprocals like $\frac{1}{\sqrt{x}} = x^{-1/2}$ before applying the power rule.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-13">Card 13 · Meaning of derivative</a> <a href="#card-15">Card 15 · Product &amp; quotient</a> <a href="#card-16">Card 16 · Chain rule</a></p>
+        </article>
+
+        <article class="card" id="card-15" data-cat="diff">
+          <p class="kicker">⚡ Differentiation · Chapter 4</p>
+          <h2>15. Product rule and quotient rule</h2>
+          <p class="aliases"><strong>Search aliases:</strong> product rule, quotient rule, differentiating a product, differentiating a quotient</p>
+          <h3>Meaning</h3>
+          <p>A product or quotient of two differentiable functions is differentiated using its dedicated rule—never factor-by-factor.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$(uv)' = u'v + uv', \qquad \left(\frac{u}{v}\right)' = \frac{u'v - uv'}{v^2} \quad (v \ne 0)$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>$(uv)' \ne u'v'$ and $(u/v)' \ne u'/v'$. In the quotient rule, keep the order $u'v - uv'$ in the numerator and square the original denominator $v^2$.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-14">Card 14 · Basic rules</a> <a href="#card-16">Card 16 · Chain rule</a> <a href="#compare-a">Compare A · Product vs Quotient vs Chain</a></p>
+        </article>
+
+        <article class="card" id="card-16" data-cat="diff">
+          <p class="kicker">⚡ Differentiation · Chapter 4</p>
+          <h2>16. Chain rule</h2>
+          <p class="aliases"><strong>Search aliases:</strong> chain rule, composite function, function of a function, $\frac{dy}{dx} = \frac{dy}{du}\cdot\frac{du}{dx}$</p>
+          <h3>Meaning</h3>
+          <p>The chain rule differentiates a composite function by multiplying the derivative of the outer function by the derivative of the inner function.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$\frac{dy}{dx} = \frac{dy}{du} \cdot \frac{du}{dx} \qquad \Longleftrightarrow \qquad \frac{d}{dx}[f(g(x))] = f'(g(x)) \cdot g'(x)$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>Forgetting the inner derivative $g'(x)$ is the #1 mistake! E.g., $\frac{d}{dx}(3x-1)^5 = 5(3x-1)^4 \cdot 3 = 15(3x-1)^4$.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-15">Card 15 · Product &amp; quotient</a> <a href="#card-17">Card 17 · Exponentials</a> <a href="#card-18">Card 18 · Logarithms</a> <a href="#compare-a">Compare A</a></p>
+        </article>
+
+        <article class="card" id="card-17" data-cat="diff">
+          <p class="kicker">⚡ Differentiation · Chapter 4</p>
+          <h2>17. Differentiation of exponential functions, including $e^{kx}$</h2>
+          <p class="aliases"><strong>Search aliases:</strong> derivative of $e^x$, derivative of $e^{kx}$, differentiating exponential functions</p>
+          <h3>Meaning</h3>
+          <p>The natural exponential $e^x$ is its own derivative, and the chain rule extends this cleanly to $e^{kx}$ and $e^{f(x)}$.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$\frac{d}{dx}(e^x) = e^x, \qquad \frac{d}{dx}(e^{kx}) = ke^{kx}, \qquad \frac{d}{dx}\left(e^{f(x)}\right) = f'(x)e^{f(x)}$$</div>
+          <p>For any base $a &gt; 0$ ($a \ne 1$), rewrite $a^x = e^{x\ln a}$, giving $\frac{d}{dx}(a^x) = (\ln a)a^x$.</p>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>Do not drop the constant $k$ when differentiating $e^{kx}$, and do not reduce the exponent by $1$ as if $e^x$ were a power of $x$!</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-06">Card 6 · The number $e$</a> <a href="#card-16">Card 16 · Chain rule</a> <a href="#card-27">Card 27 · Basic integrals</a></p>
+        </article>
+
+        <article class="card" id="card-18" data-cat="diff">
+          <p class="kicker">⚡ Differentiation · Chapter 4</p>
+          <h2>18. Differentiation of logarithmic functions</h2>
+          <p class="aliases"><strong>Search aliases:</strong> derivative of $\ln x$, derivative of $\ln(f(x))$, differentiating natural logarithms</p>
+          <h3>Meaning</h3>
+          <p>The derivative of $\ln x$ is $\frac{1}{x}$, and the chain rule gives $\frac{f'(x)}{f(x)}$ for $\ln f(x)$.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$\frac{d}{dx}(\ln x) = \frac{1}{x} \quad (x &gt; 0), \qquad \frac{d}{dx}[\ln f(x)] = \frac{f'(x)}{f(x)}$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>Use log laws to split products, quotients, and powers BEFORE differentiating! For instance, $\ln(kx) = \ln k + \ln x$, so its derivative is simply $\frac{1}{x}$.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-08">Card 8 · $\ln x$</a> <a href="#card-16">Card 16 · Chain rule</a> <a href="#card-28">Card 28 · Integration by substitution</a></p>
+        </article>
+
+        <article class="card" id="card-19" data-cat="diff">
+          <p class="kicker">⚡ Differentiation · Chapter 4</p>
+          <h2>19. Second derivative</h2>
+          <p class="aliases"><strong>Search aliases:</strong> second derivative, $f''(x)$, $\frac{d^2y}{dx^2}$</p>
+          <h3>Meaning</h3>
+          <p>The second derivative is the derivative of the first derivative, measuring how the slope itself is changing.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$f''(x) = \frac{d}{dx}[f'(x)] = \frac{d^2y}{dx^2}$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>$\frac{d^2y}{dx^2}$ is NOT $\left(\frac{dy}{dx}\right)^2$. Simplify $f'(x)$ first before differentiating a second time.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-14">Card 14 · Basic rules</a> <a href="#card-23">Card 23 · Concavity</a> <a href="#card-25">Card 25 · Acceleration</a></p>
+        </article>
+
+        <article class="card" id="card-20" data-cat="diff">
+          <p class="kicker">⚡ Differentiation · Chapter 5</p>
+          <h2>20. Equation of a tangent</h2>
+          <p class="aliases"><strong>Search aliases:</strong> tangent to a curve, equation of the tangent, point-slope form</p>
+          <h3>Meaning</h3>
+          <p>Evaluating $f'(x_0)$ gives the slope of the tangent at $(x_0, y_0)$, and point-slope form gives the line’s equation.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$y - y_0 = f'(x_0)(x - x_0), \quad \text{where } y_0 = f(x_0)$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>Substitute $x = x_0$ into $f'(x)$ to get a numerical slope—never leave $f'(x)$ as a function of $x$ inside the tangent line equation!</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-13">Card 13 · Meaning of derivative</a> <a href="#card-21">Card 21 · Increasing &amp; decreasing</a></p>
+        </article>
+
+        <article class="card" id="card-21" data-cat="diff">
+          <p class="kicker">⚡ Differentiation · Chapter 5</p>
+          <h2>21. Increasing and decreasing functions</h2>
+          <p class="aliases"><strong>Search aliases:</strong> increasing function, decreasing function, strictly increasing, sign of the derivative</p>
+          <h3>Meaning</h3>
+          <p>The sign of $f'(x)$ tells whether $f(x)$ rises or falls as $x$ increases.</p>
+          <h3>Key formula or diagram</h3>
+          <ul>
+            <li>If $f'(x) &gt; 0$ on $(a, b)$, then $f$ is strictly increasing on $[a, b]$ ($f'(x) \ge 0 \implies$ increasing).</li>
+            <li>If $f'(x) &lt; 0$ on $(a, b)$, then $f$ is strictly decreasing on $[a, b]$ ($f'(x) \le 0 \implies$ decreasing).</li>
+          </ul>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>Build a sign chart using test values in the open intervals between roots of $f'(x)$. Do not confuse “$f'$ is increasing” with “$f$ is increasing”.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-20">Card 20 · Tangents</a> <a href="#card-22">Card 22 · First derivative test</a></p>
+        </article>
+
+        <article class="card" id="card-22" data-cat="diff">
+          <p class="kicker">⚡ Differentiation · Chapter 5</p>
+          <h2>22. Local extrema: first derivative test</h2>
+          <p class="aliases"><strong>Search aliases:</strong> local maximum, local minimum, turning point, stationary point, first derivative test, relative extremum</p>
+          <h3>Meaning</h3>
+          <p>A stationary point occurs where $f'(x_0) = 0$. The first derivative test classifies it by checking whether $f'(x)$ changes sign across $x_0$.</p>
+          <h3>Key formula or diagram</h3>
+          <ul>
+            <li>$f'$ changes from $+$ to $-$ across $x_0 \implies$ <strong>local maximum</strong> at $x_0$.</li>
+            <li>$f'$ changes from $-$ to $+$ across $x_0 \implies$ <strong>local minimum</strong> at $x_0$.</li>
+            <li>$f'$ does not change sign $\implies$ neither a local max nor min (stationary point of inflexion).</li>
+          </ul>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>Solving $f'(x_0) = 0$ only finds stationary points—you MUST verify the sign change of $f'$ (or use $f''$) to prove it is a turning point.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-23">Card 23 · Second derivative test</a> <a href="#card-24">Card 24 · Global extrema</a> <a href="#compare-b">Compare B</a></p>
+        </article>
+
+        <article class="card" id="card-23" data-cat="diff">
+          <p class="kicker">⚡ Differentiation · Chapter 5</p>
+          <h2>23. Concavity and the second derivative test</h2>
+          <p class="aliases"><strong>Search aliases:</strong> concavity, concave upward, concave downward, second derivative test</p>
+          <h3>Meaning</h3>
+          <p>$f''(x)$ determines the bending direction (concavity) of a graph and provides a fast test for stationary points when $f''(x_0) \ne 0$.</p>
+          <h3>Key formula or diagram</h3>
+          <ul>
+            <li>$f''(x) &gt; 0 \implies$ concave upward ($\smile$). At a stationary point, $f''(x_0) &gt; 0 \implies$ <strong>local minimum</strong>.</li>
+            <li>$f''(x) &lt; 0 \implies$ concave downward ($\frown$). At a stationary point, $f''(x_0) &lt; 0 \implies$ <strong>local maximum</strong>.</li>
+            <li>If $f'(x_0) = 0$ and $f''(x_0) = 0$, the second derivative test is inconclusive—use the first derivative test!</li>
+          </ul>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>Do not mix up the signs: $f''(x_0) &lt; 0$ means a local <strong>maximum</strong> (frown), and $f''(x_0) &gt; 0$ means a local <strong>minimum</strong> (smile).</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-19">Card 19 · Second derivative</a> <a href="#card-22">Card 22 · First derivative test</a> <a href="#card-34">Card 34 · Trapezoidal rule</a> <a href="#compare-b">Compare B</a></p>
+        </article>
+
+        <article class="card" id="card-24" data-cat="diff">
+          <p class="kicker">⚡ Differentiation · Chapter 5</p>
+          <h2>24. Global extrema and optimisation</h2>
+          <p class="aliases"><strong>Search aliases:</strong> global maximum, global minimum, absolute extrema, optimisation, greatest and least values</p>
+          <h3>Meaning</h3>
+          <p>Global extrema are the overall greatest and least values of $f(x)$ on an entire domain or closed interval $[a, b]$.</p>
+          <h3>Key formula or diagram</h3>
+          <p>On a closed interval $[a, b]$, evaluate $f(x)$ at all stationary points inside $(a, b)$ AND at the endpoints $a$ and $b$, then compare all values.</p>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>Forgetting to check the interval endpoints $f(a)$ and $f(b)$ is a classic exam trap. In word problems, always state the practical domain (e.g. $x &gt; 0$).</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-22">Card 22 · Local extrema</a> <a href="#compare-c">Compare C · Local vs Global</a></p>
+        </article>
+
+        <article class="card" id="card-25" data-cat="diff">
+          <p class="kicker">⚡ Differentiation · Chapter 5</p>
+          <h2>25. Rates of change, including velocity and acceleration</h2>
+          <p class="aliases"><strong>Search aliases:</strong> rate of change, instantaneous rate, velocity, acceleration, displacement</p>
+          <h3>Meaning</h3>
+          <p>$\frac{dQ}{dt}$ gives the instantaneous rate of change of $Q$ with respect to time $t$.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$\text{Average rate} = \frac{Q(t_2) - Q(t_1)}{t_2 - t_1}, \qquad v = \frac{ds}{dt}, \qquad a = \frac{dv}{dt} = \frac{d^2s}{dt^2}$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>Negative rate means $Q$ is decreasing (do not write “decreasing at $-5\text{ cm/s}$”—say “decreasing at $5\text{ cm/s}$”). Always include proper units.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-13">Card 13 · Derivative meaning</a> <a href="#card-29">Card 29 · Indefinite integrals</a> <a href="#card-33">Card 33 · Net change</a></p>
+        </article>
+
+        <!-- ==================== 3. INTEGRATION ==================== -->
+        <article class="card" id="card-26" data-cat="int">
+          <p class="kicker">🌊 Integration · Chapter 6</p>
+          <h2>26. Indefinite integral as a family of primitives, and $+C$</h2>
+          <p class="aliases"><strong>Search aliases:</strong> indefinite integral, primitive function, antiderivative, constant of integration, $+C$</p>
+          <h3>Meaning</h3>
+          <p>Integration reverses differentiation. If $F'(x) = f(x)$, then $F(x) + C$ represents the entire family of primitive functions of $f(x)$.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$\int f(x)\,dx = F(x) + C \iff F'(x) = f(x)$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>Never forget $+C$ in an indefinite integral! Without $+C$, you only wrote one primitive instead of the whole family.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-27">Card 27 · Basic integrals</a> <a href="#card-29">Card 29 · Meaning of $+C$</a> <a href="#compare-d">Compare D</a></p>
+        </article>
+
+        <article class="card" id="card-27" data-cat="int">
+          <p class="kicker">🌊 Integration · Chapter 6</p>
+          <h2>27. Basic integrals of algebraic and exponential functions, and properties</h2>
+          <p class="aliases"><strong>Search aliases:</strong> basic integration formulas, properties of indefinite integrals, integrating powers, integrating exponentials</p>
+          <h3>Meaning</h3>
+          <p>Basic integration rules reverse standard derivative rules, and linearity lets you pull out constants and integrate term by term.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$\int k\,dx = kx + C, \qquad \int x^n\,dx = \frac{x^{n+1}}{n+1} + C \quad (n \ne -1), \qquad \int \frac{1}{x}\,dx = \ln|x| + C$$</div>
+          <div class="formula-box">$$\int e^x\,dx = e^x + C, \qquad \int e^{kx}\,dx = \frac{1}{k}e^{kx} + C \quad (k \ne 0), \qquad \int a^x\,dx = \frac{a^x}{\ln a} + C$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>Do not apply the power rule when $n = -1$: $\int x^{-1}\,dx = \ln|x| + C$. For $\int e^{kx}\,dx$, divide by $k$ (do not multiply by $k$).</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-17">Card 17 · Exponential derivatives</a> <a href="#card-28">Card 28 · Substitution</a></p>
+        </article>
+
+        <article class="card" id="card-28" data-cat="int">
+          <p class="kicker">🌊 Integration · Chapter 6</p>
+          <h2>28. Integration by substitution (indefinite)</h2>
+          <p class="aliases"><strong>Search aliases:</strong> integration by substitution, change of variable, $u$-substitution, indefinite substitution</p>
+          <h3>Meaning</h3>
+          <p>Substitution simplifies a composite integrand by setting $u = g(x)$ and replacing $g'(x)\,dx$ with $du$.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$\int f(g(x))g'(x)\,dx = \int f(u)\,du \quad (\text{where } u = g(x),\; du = g'(x)\,dx)$$</div>
+          <div class="formula-box">$$\text{Special pattern: } \int \frac{f'(x)}{f(x)}\,dx = \ln|f(x)| + C$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>In an indefinite integral, always substitute back to express the final answer in terms of the original variable $x$, and keep $+C$.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-16">Card 16 · Chain rule</a> <a href="#card-31">Card 31 · Definite substitution</a></p>
+        </article>
+
+        <article class="card" id="card-29" data-cat="int">
+          <p class="kicker">🌊 Integration · Chapter 6</p>
+          <h2>29. Geometrical and daily-life use of indefinite integrals (including what $+C$ means)</h2>
+          <p class="aliases"><strong>Search aliases:</strong> family of curves, finding a curve from its slope, initial condition, meaning of $+C$</p>
+          <h3>Meaning</h3>
+          <p>Geometrically, $+C$ shifts a curve vertically; in real-world rate models, $+C$ is fixed using an initial condition or known point.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$\frac{dy}{dx} = f(x) \implies y = \int f(x)\,dx = F(x) + C$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>If a point $(x_0, y_0)$ or initial value at $t = 0$ is given, you must solve for $C$ and write the specific equation.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-26">Card 26 · $+C$</a> <a href="#card-33">Card 33 · Definite rate problems</a> <a href="#compare-d">Compare D</a></p>
+        </article>
+
+        <article class="card" id="card-30" data-cat="int">
+          <p class="kicker">🌊 Integration · Chapter 7</p>
+          <h2>30. Definite integral; Fundamental Theorem of Calculus; properties</h2>
+          <p class="aliases"><strong>Search aliases:</strong> definite integral, Fundamental Theorem of Calculus, FTC, properties of definite integrals, signed area</p>
+          <h3>Meaning</h3>
+          <p>A definite integral evaluates to a number equal to the net change in a primitive $F(x)$ from $a$ to $b$.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$\int_a^b f(x)\,dx = \Big[F(x)\Big]_a^b = F(b) - F(a) \quad (\text{where } F'(x) = f(x))$$</div>
+          <ul>
+            <li>$\int_a^a f(x)\,dx = 0$, and $\int_b^a f(x)\,dx = -\int_a^b f(x)\,dx$.</li>
+            <li>Additivity: $\int_a^c f(x)\,dx + \int_c^b f(x)\,dx = \int_a^b f(x)\,dx$.</li>
+          </ul>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>Do not include $+C$ in a finished definite integral! Also remember a definite integral can be negative when the curve sits below the $x$-axis.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-31">Card 31 · Definite substitution</a> <a href="#card-32">Card 32 · Area</a> <a href="#compare-d">Compare D</a></p>
+        </article>
+
+        <article class="card" id="card-31" data-cat="int">
+          <p class="kicker">🌊 Integration · Chapter 7</p>
+          <h2>31. Evaluating a definite integral by substitution</h2>
+          <p class="aliases"><strong>Search aliases:</strong> definite integral by substitution, changing limits, $u$-substitution in a definite integral</p>
+          <h3>Meaning</h3>
+          <p>When changing variables from $x$ to $u = g(x)$ in a definite integral, transform the limits from $[a, b]$ to $[g(a), g(b)]$.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$\int_{x=a}^{x=b} f(g(x))g'(x)\,dx = \int_{u=g(a)}^{u=g(b)} f(u)\,du$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>Never plug $x$-limits into an antiderivative written in $u$! Either change the limits to $u$-values or convert back to $x$ first.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-28">Card 28 · Indefinite substitution</a> <a href="#card-30">Card 30 · FTC</a></p>
+        </article>
+
+        <article class="card" id="card-32" data-cat="int">
+          <p class="kicker">🌊 Integration · Chapter 7</p>
+          <h2>32. Area of a plane figure (curve and the $x$-axis only)</h2>
+          <p class="aliases"><strong>Search aliases:</strong> area under a curve, area between a curve and the $x$-axis, plane area, combined regions</p>
+          <h3>Meaning</h3>
+          <p>Geometric area is always non-negative. Regions above the $x$-axis contribute $+\int f(x)\,dx$, while regions below contribute $-\int f(x)\,dx$.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$\text{Area} = \int_a^b |f(x)|\,dx$$</div>
+          <p>If $f(x)$ crosses the $x$-axis at $x = c \in (a, b)$, split the integral at $c$ and take the absolute value of each piece.</p>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>Integrating straight across an $x$-intercept cancels positive and negative signed areas! Always find roots in $[a, b]$ and split the integral.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-30">Card 30 · Definite integral</a> <a href="#card-34">Card 34 · Trapezoidal rule</a> <a href="#compare-e">Compare E</a></p>
+        </article>
+
+        <article class="card" id="card-33" data-cat="int">
+          <p class="kicker">🌊 Integration · Chapter 7</p>
+          <h2>33. Definite integrals in rate-of-change / daily-life problems</h2>
+          <p class="aliases"><strong>Search aliases:</strong> net change, definite integral of a rate, real-life definite integration</p>
+          <h3>Meaning</h3>
+          <p>Integrating a rate of change $\frac{dQ}{dt} = f(t)$ over $[a, b]$ yields the net change $Q(b) - Q(a)$ during that time interval.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$\text{Net change from } t=a \text{ to } t=b = \int_a^b f(t)\,dt = Q(b) - Q(a)$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>Check whether the question asks for the <em>change</em> during $[a, b]$ or the <em>total amount</em> at $t = b$ (which requires adding $Q(a)$).</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-25">Card 25 · Rates of change</a> <a href="#card-29">Card 29 · Indefinite rate problems</a></p>
+        </article>
+
+        <article class="card" id="card-34" data-cat="int">
+          <p class="kicker">🌊 Integration · Chapter 8</p>
+          <h2>34. Trapezoidal rule: estimate, strips, over- and under-estimate</h2>
+          <p class="aliases"><strong>Search aliases:</strong> trapezoidal rule, trapezium rule, approximate a definite integral, over-estimate, under-estimate, strips</p>
+          <h3>Meaning</h3>
+          <p>The trapezoidal rule approximates $\int_a^b f(x)\,dx$ by dividing $[a, b]$ into $n$ equal strips of width $\Delta x = \frac{b-a}{n}$ and summing trapezium areas.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$\int_a^b f(x)\,dx \approx \frac{\Delta x}{2}\big(y_0 + 2y_1 + 2y_2 + \cdots + 2y_{n-1} + y_n\big), \quad \Delta x = \frac{b-a}{n}$$</div>
+          <ul>
+            <li>If $f''(x) &gt; 0$ on $(a, b)$ (concave upward), chords lie above the curve $\implies$ <strong>over-estimate</strong>.</li>
+            <li>If $f''(x) &lt; 0$ on $(a, b)$ (concave downward), chords lie below the curve $\implies$ <strong>under-estimate</strong>.</li>
+          </ul>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>$n$ sub-intervals require $n+1$ ordinates ($y_0$ to $y_n$). Only the middle ordinates are multiplied by $2$; endpoints $y_0$ and $y_n$ have coefficient $1$.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-23">Card 23 · Concavity</a> <a href="#card-30">Card 30 · Definite integral</a> <a href="#compare-e">Compare E</a></p>
+        </article>
+
+        <!-- ==================== 4. PROBABILITY & STATISTICS ==================== -->
+        <article class="card" id="card-35" data-cat="prob">
+          <p class="kicker">🎲 Probability &amp; Stats · Chapter 9 <span class="review-sticker">Review</span></p>
+          <h2>35. Statistical diagrams; mean, variance and standard deviation of a data set</h2>
+          <p class="aliases"><strong>Search aliases:</strong> statistical diagrams, arithmetic mean, variance of a data set, standard deviation of a data set, measures of dispersion</p>
+          <h3>Meaning</h3>
+          <p>Compulsory Part review: summarising a complete set of $n$ data values using central tendency ($\bar{x}$) and dispersion (variance and SD).</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$\bar{x} = \frac{\sum x}{n}, \qquad \text{Variance} = \frac{\sum (x - \bar{x})^2}{n} = \frac{\sum x^2}{n} - \bar{x}^2, \qquad \text{SD} = \sqrt{\text{Variance}}$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>Do not confuse the Compulsory Part data-set variance (divisor $n$) with the Chapter 14 unbiased sample variance $s^2$ (divisor $n-1$).</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-43">Card 43 · $E(X)$ &amp; $\mathrm{Var}(X)$</a> <a href="#card-55">Card 55 · Unbiased estimators</a></p>
+        </article>
+
+        <article class="card" id="card-36" data-cat="prob">
+          <p class="kicker">🎲 Probability &amp; Stats · Chapter 9 <span class="review-sticker">Review</span></p>
+          <h2>36. Set notation; addition and multiplication laws of probability</h2>
+          <p class="aliases"><strong>Search aliases:</strong> set notation, union, intersection, complement, addition law, multiplication law, mutually exclusive</p>
+          <h3>Meaning</h3>
+          <p>Compulsory Part review: set operations ($\cup$, $\cap$, $A'$) and combining probabilities of events.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$P(A \cup B) = P(A) + P(B) - P(A \cap B), \qquad P(A') = 1 - P(A)$$</div>
+          <p>If $A$ and $B$ are mutually exclusive, $P(A \cap B) = 0$. If independent, $P(A \cap B) = P(A)P(B)$.</p>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>Do not forget to subtract $P(A \cap B)$ when events can overlap, and do not multiply $P(A)P(B)$ unless independence is established.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-37">Card 37 · Conditional probability</a> <a href="#card-38">Card 38 · Multiplication law</a></p>
+        </article>
+
+        <article class="card" id="card-37" data-cat="prob">
+          <p class="kicker">🎲 Probability &amp; Stats · Chapter 10</p>
+          <h2>37. Conditional probability $P(A \mid B)$</h2>
+          <p class="aliases"><strong>Search aliases:</strong> conditional probability, given that, reduced sample space, $P(A \mid B)$</p>
+          <h3>Meaning</h3>
+          <p>$P(A \mid B)$ is the probability that $A$ occurs given that $B$ has already occurred, restricting the sample space to $B$.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$P(A \mid B) = \frac{P(A \cap B)}{P(B)} \quad (\text{provided } P(B) &gt; 0)$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>$P(A \mid B)$ is NOT $P(B \mid A)$! The event after the vertical bar $|$ is the given condition and goes in the denominator.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-38">Card 38 · Multiplication law</a> <a href="#card-40">Card 40 · Bayes’ theorem</a> <a href="#compare-f">Compare F</a></p>
+        </article>
+
+        <article class="card" id="card-38" data-cat="prob">
+          <p class="kicker">🎲 Probability &amp; Stats · Chapter 10</p>
+          <h2>38. Multiplication law and independent events</h2>
+          <p class="aliases"><strong>Search aliases:</strong> multiplication law of probability, independent events, $P(A \text{ and } B)$, tree diagram</p>
+          <h3>Meaning</h3>
+          <p>The general multiplication rule computes joint probabilities along branches; independence means knowing $B$ does not alter the chance of $A$.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$P(A \cap B) = P(A)P(B \mid A) = P(B)P(A \mid B)$$</div>
+          <div class="formula-box">$$A, B \text{ independent} \iff P(A \cap B) = P(A)P(B) \iff P(A \mid B) = P(A)$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>Mutually exclusive events ($P(A \cap B)=0$) with positive probabilities are NEVER independent—if one happens, the other is impossible!</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-37">Card 37 · Conditional probability</a> <a href="#card-39">Card 39 · Total probability</a></p>
+        </article>
+
+        <article class="card" id="card-39" data-cat="prob">
+          <p class="kicker">🎲 Probability &amp; Stats · Chapter 10</p>
+          <h2>39. Rule of total probability (with a tree)</h2>
+          <p class="aliases"><strong>Search aliases:</strong> rule of total probability, law of total probability, partition, tree diagram</p>
+          <h3>Meaning</h3>
+          <p>When $B_1, B_2, \ldots, B_n$ partition the sample space into mutually exclusive, exhaustive cases, $P(A)$ is the sum of probabilities of all tree paths leading to $A$.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$P(A) = P(B_1)P(A \mid B_1) + P(B_2)P(A \mid B_2) + \cdots + P(B_n)P(A \mid B_n)$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>Ensure your partition branches $B_1, \ldots, B_n$ are mutually exclusive and their probabilities sum to $1$.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-38">Card 38 · Multiplication law</a> <a href="#card-40">Card 40 · Bayes’ theorem</a></p>
+        </article>
+
+        <article class="card" id="card-40" data-cat="prob">
+          <p class="kicker">🎲 Probability &amp; Stats · Chapter 10</p>
+          <h2>40. Bayes’ theorem</h2>
+          <p class="aliases"><strong>Search aliases:</strong> Bayes' theorem, Bayes’s theorem, reversing a condition, posterior probability</p>
+          <h3>Meaning</h3>
+          <p>Bayes’ theorem flips the conditioning direction, finding $P(B_i \mid A)$ from forward tree probabilities $P(B_j)$ and $P(A \mid B_j)$.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$P(B_i \mid A) = \frac{P(B_i)P(A \mid B_i)}{P(A)} = \frac{P(B_i)P(A \mid B_i)}{\sum_{j=1}^n P(B_j)P(A \mid B_j)}$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>Always divide the chosen branch $P(B_i)P(A \mid B_i)$ by the total probability $P(A)$, not just by $P(B_i)$.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-37">Card 37 · Conditional probability</a> <a href="#card-39">Card 39 · Total probability</a> <a href="#compare-f">Compare F</a></p>
+        </article>
+
+        <article class="card" id="card-41" data-cat="prob">
+          <p class="kicker">🎲 Probability &amp; Stats · Chapter 11</p>
+          <h2>41. Discrete random variable and its possible values</h2>
+          <p class="aliases"><strong>Search aliases:</strong> random variable, discrete random variable, possible values, sample space</p>
+          <h3>Meaning</h3>
+          <p>A discrete random variable $X$ assigns a numerical value from a countable/separate list to each outcome of a random experiment.</p>
+          <h3>Key formula or diagram</h3>
+          <p>Example: Tossing 3 coins and letting $X$ be the number of heads gives possible values $\{0, 1, 2, 3\}$.</p>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>List distinct numerical values of $X$, not raw sample-space outcomes (like HTH), and do not list repeated values twice.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-42">Card 42 · Discrete distribution</a> <a href="#card-49">Card 49 · Continuous random variable</a></p>
+        </article>
+
+        <article class="card" id="card-42" data-cat="prob">
+          <p class="kicker">🎲 Probability &amp; Stats · Chapter 11</p>
+          <h2>42. Discrete probability distribution ($\sum P = 1$; table, graph or formula)</h2>
+          <p class="aliases"><strong>Search aliases:</strong> probability distribution, probability function, bar chart of a distribution, table of probabilities</p>
+          <h3>Meaning</h3>
+          <p>A discrete probability distribution specifies $P(X = x)$ for every possible value $x$, via a table, bar chart, or formula.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$P(X = x) \ge 0 \text{ for all } x, \qquad \sum_{\text{all } x} P(X = x) = 1$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>Use $\sum P(X = x) = 1$ to solve for an unknown constant $k$ in a probability table or formula, and verify every probability lies in $[0, 1]$.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-41">Card 41 · Random variable</a> <a href="#card-43">Card 43 · Expectation &amp; variance</a></p>
+        </article>
+
+        <article class="card" id="card-43" data-cat="prob">
+          <p class="kicker">🎲 Probability &amp; Stats · Chapter 11</p>
+          <h2>43. $E(X)$, $\mathrm{Var}(X)$ and standard deviation for a discrete variable</h2>
+          <p class="aliases"><strong>Search aliases:</strong> expectation, expected value, mean of a random variable, variance of a random variable, standard deviation</p>
+          <h3>Meaning</h3>
+          <p>$E(X)$ is the probability-weighted long-run average of $X$; $\mathrm{Var}(X)$ measures its squared spread around $E(X)$.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$E(X) = \sum x\,P(X=x), \qquad E[g(X)] = \sum g(x)\,P(X=x)$$</div>
+          <div class="formula-box">$$\mathrm{Var}(X) = E\big[(X - E(X))^2\big] = E(X^2) - [E(X)]^2, \qquad \text{SD}(X) = \sqrt{\mathrm{Var}(X)}$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>In $\mathrm{Var}(X) = E(X^2) - [E(X)]^2$, remember to square $E(X)$! Also note $E(X^2) = \sum x^2 P(X=x) \ne [E(X)]^2$.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-42">Card 42 · Discrete distribution</a> <a href="#card-44">Card 44 · Linear rules</a></p>
+        </article>
+
+        <article class="card" id="card-44" data-cat="prob">
+          <p class="kicker">🎲 Probability &amp; Stats · Chapter 11</p>
+          <h2>44. Useful results on expectation and variance (including $aX+b$)</h2>
+          <p class="aliases"><strong>Search aliases:</strong> linear transformation of a random variable, $E(aX+b)$, $\mathrm{Var}(aX+b)$$</p>
+          <h3>Meaning</h3>
+          <p>Linear transformations scale and shift the mean, whereas shifting by $+b$ does not change variance and scaling by $a$ multiplies variance by $a^2$.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$E(aX + b) = aE(X) + b, \qquad \mathrm{Var}(aX + b) = a^2\mathrm{Var}(X)$$</div>
+          <div class="formula-box">$$E(X \pm Y) = E(X) \pm E(Y), \qquad \mathrm{Var}(X \pm Y) = \mathrm{Var}(X) + \mathrm{Var}(Y) \quad (\text{if } X, Y \text{ independent})$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>For independent $X$ and $Y$, $\mathrm{Var}(X - Y) = \mathrm{Var}(X) + \mathrm{Var}(Y)$ (variances ADD even when subtracting!). And $\mathrm{Var}(aX) = a^2\mathrm{Var}(X)$, not $a\mathrm{Var}(X)$.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-43">Card 43 · $E(X)$ &amp; $\mathrm{Var}(X)$</a> <a href="#card-54">Card 54 · Sampling distribution</a></p>
+        </article>
+
+        <article class="card" id="card-45" data-cat="prob">
+          <p class="kicker">🎲 Probability &amp; Stats · Chapter 12</p>
+          <h2>45. Bernoulli distribution</h2>
+          <p class="aliases"><strong>Search aliases:</strong> Bernoulli trial, Bernoulli variable, Bernoulli distribution, success and failure</p>
+          <h3>Meaning</h3>
+          <p>A single trial with two mutually exclusive outcomes: ‘success’ ($X=1$, prob $p$) and ‘failure’ ($X=0$, prob $1-p$).</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$P(X = x) = p^x(1-p)^{1-x} \quad (x = 0, 1), \qquad E(X) = p, \qquad \mathrm{Var}(X) = p(1-p)$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>A Bernoulli variable only takes values $0$ and $1$; it is simply $B(1, p)$.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-46">Card 46 · Binomial distribution</a></p>
+        </article>
+
+        <article class="card" id="card-46" data-cat="prob">
+          <p class="kicker">🎲 Probability &amp; Stats · Chapter 12</p>
+          <h2>46. Binomial distribution: conditions, probabilities, mean and variance</h2>
+          <p class="aliases"><strong>Search aliases:</strong> binomial distribution, $X \sim B(n, p)$, binomial experiment, number of successes</p>
+          <h3>Meaning</h3>
+          <p>Counts the number of successes $X$ in a fixed number $n$ of independent Bernoulli trials with constant success probability $p$.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$X \sim B(n, p) \implies P(X = x) = C^n_x p^x (1-p)^{n-x} \quad (x = 0, 1, \ldots, n)$$</div>
+          <div class="formula-box">$$E(X) = np, \qquad \mathrm{Var}(X) = np(1-p)$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>Do not forget $x = 0$ in the support $\{0, 1, \ldots, n\}$. Sampling without replacement from a finite batch violates independence.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-02">Card 2 · $C^n_r$</a> <a href="#card-45">Card 45 · Bernoulli</a> <a href="#card-47">Card 47 · Poisson</a> <a href="#compare-g">Compare G</a></p>
+        </article>
+
+        <article class="card" id="card-47" data-cat="prob">
+          <p class="kicker">🎲 Probability &amp; Stats · Chapter 12</p>
+          <h2>47. Poisson distribution: conditions, probabilities, mean and variance</h2>
+          <p class="aliases"><strong>Search aliases:</strong> Poisson distribution, $X \sim \mathrm{Po}(\lambda)$, Poisson experiment, number of occurrences in an interval</p>
+          <h3>Meaning</h3>
+          <p>Counts the number of random, independent occurrences of an event in a fixed interval of time or space, with mean rate $\lambda$.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$X \sim \mathrm{Po}(\lambda) \implies P(X = x) = \frac{e^{-\lambda}\lambda^x}{x!} \quad (x = 0, 1, 2, \ldots)$$</div>
+          <div class="formula-box">$$E(X) = \lambda, \qquad \mathrm{Var}(X) = \lambda$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>Always scale $\lambda$ proportionally to match the exact time/space interval asked in the question!</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-46">Card 46 · Binomial</a> <a href="#card-48">Card 48 · Applications</a> <a href="#compare-g">Compare G</a></p>
+        </article>
+
+        <article class="card" id="card-48" data-cat="prob">
+          <p class="kicker">🎲 Probability &amp; Stats · Chapter 12</p>
+          <h2>48. Applications of the binomial and Poisson distributions</h2>
+          <p class="aliases"><strong>Search aliases:</strong> choosing a discrete distribution, binomial or Poisson, real-life discrete models</p>
+          <h3>Meaning</h3>
+          <p>Select the model that fits the physical setup: fixed $n$ independent trials $\implies B(n, p)$; random events in a continuous interval $\implies \mathrm{Po}(\lambda)$.</p>
+          <h3>Key formula or diagram</h3>
+          <p>Always define $X$ clearly in words and write $X \sim B(n, p)$ or $X \sim \mathrm{Po}(\lambda)$ before computing probabilities.</p>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>In HKDSE M1, Binomial and Poisson are applied as separate models—never approximate one with the other.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-46">Card 46 · Binomial</a> <a href="#card-47">Card 47 · Poisson</a> <a href="#compare-g">Compare G</a></p>
+        </article>
+
+        <article class="card" id="card-49" data-cat="prob">
+          <p class="kicker">🎲 Probability &amp; Stats · Chapter 13</p>
+          <h2>49. Continuous random variable; probability as an area under a density curve</h2>
+          <p class="aliases"><strong>Search aliases:</strong> continuous random variable, probability density function, p.d.f., area under a curve</p>
+          <h3>Meaning</h3>
+          <p>A continuous random variable takes values across an interval; probabilities correspond to areas under its density curve $y = f(x)$.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$f(x) \ge 0, \qquad \text{Total area} = 1, \qquad P(X = a) = 0, \qquad P(a &lt; X &lt; b) = P(a \le X \le b)$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>For a continuous variable, $P(X = a) = 0$, so strict ($&lt;$) and inclusive ($\le$) inequalities give the exact same probability.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-41">Card 41 · Discrete random variable</a> <a href="#card-50">Card 50 · Normal distribution</a></p>
+        </article>
+
+        <article class="card" id="card-50" data-cat="prob">
+          <p class="kicker">🎲 Probability &amp; Stats · Chapter 13</p>
+          <h2>50. Normal distribution: shape, $\mu$, $\sigma$, and properties</h2>
+          <p class="aliases"><strong>Search aliases:</strong> normal distribution, normal curve, bell-shaped curve, $X \sim N(\mu, \sigma^2)$, mean and variance</p>
+          <h3>Meaning</h3>
+          <p>A symmetric, bell-shaped continuous distribution centered at $\mu$ with spread governed by standard deviation $\sigma$.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$X \sim N(\mu, \sigma^2) \implies E(X) = \mu, \qquad \mathrm{Var}(X) = \sigma^2$$</div>
+          <svg class="diagram" viewBox="0 0 340 160" width="340" height="160" role="img" aria-label="Symmetric normal bell curve centered at mu">
+            <line x1="20" y1="130" x2="320" y2="130" stroke="#18202c" stroke-width="2.5"/>
+            <path d="M30 128 C 85 128, 120 26, 170 26 C 220 26, 255 128, 310 128" fill="#f4ebff" stroke="#9b5de5" stroke-width="3.5"/>
+            <line x1="170" y1="26" x2="170" y2="130" stroke="#18202c" stroke-width="2" stroke-dasharray="5 4"/>
+            <text x="165" y="148" font-size="14" font-weight="bold" font-family="Plus Jakarta Sans, sans-serif" fill="#18202c">μ</text>
+            <text x="88" y="88" font-size="12" font-weight="bold" font-family="Plus Jakarta Sans, sans-serif" fill="#6b21a8">Area = 0.5</text>
+            <text x="195" y="88" font-size="12" font-weight="bold" font-family="Plus Jakarta Sans, sans-serif" fill="#6b21a8">Area = 0.5</text>
+          </svg>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>In $N(\mu, \sigma^2)$, the second number is the <strong>variance</strong> $\sigma^2$, NOT $\sigma$! E.g., $N(50, 9)$ means $\sigma = 3$.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-51">Card 51 · Standardising to $Z$</a> <a href="#card-52">Card 52 · Normal applications</a></p>
+        </article>
+
+        <article class="card" id="card-51" data-cat="prob">
+          <p class="kicker">🎲 Probability &amp; Stats · Chapter 13</p>
+          <h2>51. Standardising to $Z$ and using a standard normal table</h2>
+          <p class="aliases"><strong>Search aliases:</strong> standard normal distribution, $Z$, standard score, standardisation, standard normal table, $A(z)$</p>
+          <h3>Meaning</h3>
+          <p>Any normal variable $X \sim N(\mu, \sigma^2)$ transforms into the standard normal $Z \sim N(0, 1)$ so probabilities can be looked up in the table $A(z) = P(0 \le Z \le z)$.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$Z = \frac{X - \mu}{\sigma} \sim N(0, 1), \qquad z = \frac{x - \mu}{\sigma}$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>Always sketch the bell curve and shade the desired region! The HKDSE table gives $P(0 \le Z \le z)$ for $z \ge 0$, so add or subtract $0.5$ carefully for tails.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-50">Card 50 · Normal distribution</a> <a href="#card-52">Card 52 · Applications</a></p>
+        </article>
+
+        <article class="card" id="card-52" data-cat="prob">
+          <p class="kicker">🎲 Probability &amp; Stats · Chapter 13</p>
+          <h2>52. Applications of the normal distribution</h2>
+          <p class="aliases"><strong>Search aliases:</strong> normal distribution in real life, finding a cut-off, probability from a normal model</p>
+          <h3>Meaning</h3>
+          <p>Solve forward problems (given cut-off $x$, find probability) and inverse problems (given probability, find $z$ from table, then solve $x = \mu + z\sigma$).</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$z = \frac{x - \mu}{\sigma} \iff x = \mu + z\sigma$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>Check the sign of $z$ in inverse problems: if $x$ is below the mean $\mu$, $z$ must be negative!</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-51">Card 51 · Standardising</a> <a href="#card-54">Card 54 · Sample mean</a></p>
+        </article>
+
+        <article class="card" id="card-53" data-cat="prob">
+          <p class="kicker">🎲 Probability &amp; Stats · Chapter 14</p>
+          <h2>53. Population parameter vs sample statistic (Greek vs $\bar{x}, s^2$)</h2>
+          <p class="aliases"><strong>Search aliases:</strong> population, sample, parameter, statistic, population mean, sample mean, population variance, sample variance</p>
+          <h3>Meaning</h3>
+          <p>A population parameter ($\mu, \sigma^2, \sigma$) is a fixed constant describing the whole population. A sample statistic ($\bar{x}, s^2, s$) is a random variable computed from a sample.</p>
+          <h3>Key formula or diagram</h3>
+          <ul>
+            <li><strong>Population parameters (constants):</strong> mean $\mu$, variance $\sigma^2$, SD $\sigma$.</li>
+            <li><strong>Sample statistics (random variables):</strong> mean $\bar{x}$, variance $s^2$, SD $s$.</li>
+          </ul>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>Never label a sample mean as $\mu$ or a sample variance as $\sigma^2$.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-54">Card 54 · Sampling distribution</a> <a href="#card-55">Card 55 · Point estimators</a></p>
+        </article>
+
+        <article class="card" id="card-54" data-cat="prob">
+          <p class="kicker">🎲 Probability &amp; Stats · Chapter 14</p>
+          <h2>54. Sampling distribution of the sample mean (normal parent &amp; CLT)</h2>
+          <p class="aliases"><strong>Search aliases:</strong> sampling distribution, sample mean, mean and variance of the sample mean, Central Limit Theorem, CLT, $n \ge 30$</p>
+          <h3>Meaning</h3>
+          <p>Describes how the sample mean $\bar{x}$ behaves across repeated random samples of size $n$.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$E(\bar{x}) = \mu, \qquad \mathrm{Var}(\bar{x}) = \frac{\sigma^2}{n}, \qquad \text{SD}(\bar{x}) = \frac{\sigma}{\sqrt{n}}$$</div>
+          <ul>
+            <li>If parent is $N(\mu, \sigma^2)$, then $\bar{x} \sim N\!\left(\mu, \frac{\sigma^2}{n}\right)$ <strong>exactly</strong> for any $n$.</li>
+            <li>If parent is non-normal/unknown, by the <strong>Central Limit Theorem (CLT)</strong>, $\bar{x} \sim N\!\left(\mu, \frac{\sigma^2}{n}\right)$ <strong>approximately</strong> when $n$ is large ($n \ge 30$).</li>
+          </ul>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>When standardising $\bar{x}$, divide by $\frac{\sigma}{\sqrt{n}}$, NOT $\sigma$! And remember CLT applies to $\bar{x}$, not to individual observations $X$.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-50">Card 50 · Normal</a> <a href="#card-56">Card 56 · Confidence interval</a></p>
+        </article>
+
+        <article class="card" id="card-55" data-cat="prob">
+          <p class="kicker">🎲 Probability &amp; Stats · Chapter 14</p>
+          <h2>55. Point estimators and unbiased estimators: $\bar{x} \to \mu$; $s^2 \to \sigma^2$</h2>
+          <p class="aliases"><strong>Search aliases:</strong> point estimator, point estimate, unbiased estimator, sample mean as estimator, sample variance</p>
+          <h3>Meaning</h3>
+          <p>An estimator $\hat{\theta}$ is unbiased if $E(\hat{\theta}) = \theta$. $\bar{x}$ is an unbiased estimator of $\mu$, and $s^2$ (with divisor $n-1$) is an unbiased estimator of $\sigma^2$.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i, \qquad s^2 = \frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2 = \frac{1}{n-1}\left(\sum_{i=1}^n x_i^2 - n\bar{x}^2\right)$$</div>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>Always divide by $n - 1$ (NOT $n$) when asked for an unbiased estimate of population variance $\sigma^2$!</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-35">Card 35 · Data set variance</a> <a href="#card-56">Card 56 · Confidence interval</a> <a href="#compare-h">Compare H</a></p>
+        </article>
+
+        <article class="card" id="card-56" data-cat="prob">
+          <p class="kicker">🎲 Probability &amp; Stats · Chapter 14</p>
+          <h2>56. Confidence interval for a population mean, and confidence level</h2>
+          <p class="aliases"><strong>Search aliases:</strong> confidence interval, confidence level, interval estimation, CI for a mean, critical value of $z$</p>
+          <h3>Meaning</h3>
+          <p>A $100(1-\alpha)\%$ confidence interval gives a plausible range for the unknown constant $\mu$ centered at $\bar{x}$.</p>
+          <h3>Key formula or diagram</h3>
+          <div class="formula-box">$$\bar{x} \pm z_{\alpha/2}\frac{\sigma}{\sqrt{n}} \quad (\sigma \text{ known}), \qquad \bar{x} \pm z_{\alpha/2}\frac{s}{\sqrt{n}} \quad (\sigma \text{ unknown, } n \ge 30)$$</div>
+          <p>Common critical values: $90\% \to 1.645$, $95\% \to 1.96$, $97\% \to 2.17$, $99\% \to 2.575$.</p>
+          <div class="pitfall">
+            <div class="pitfall-mascot" aria-hidden="true">⚠️</div>
+            <div class="pitfall-body">
+              <h3>Trap Alert!</h3>
+              <p>Once calculated, $\mu$ is a fixed constant—do NOT say “there is a $95\%$ probability that $\mu$ lies in $[a, b]$”. Say “in repeated sampling, $95\%$ of intervals constructed this way contain $\mu$”.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-54">Card 54 · Sampling distribution</a> <a href="#card-55">Card 55 · Point estimators</a> <a href="#compare-h">Compare H</a></p>
+        </article>
+
+        <!-- ==================== COMPARE PAGES A–H ==================== -->
+        <article class="compare" id="compare-a" data-cat="diff">
+          <p class="kicker">⚡ Differentiation · Compare Page A</p>
+          <h2>Product rule vs quotient rule vs chain rule</h2>
+          <p>Identify the outermost structure of the expression first—many HKDSE M1 functions combine two rules in one problem.</p>
+          <div class="compare-grid cols-3">
+            <div class="compare-col">
+              <h3>Product Rule</h3>
+              <p>For $y = u \cdot v$:</p>
+              <div class="formula-box">$$(uv)' = u'v + uv'$$</div>
+              <p>Never differentiate factors separately as $u'v'$.</p>
+            </div>
+            <div class="compare-col">
+              <h3>Quotient Rule</h3>
+              <p>For $y = \frac{u}{v}$ ($v \ne 0$):</p>
+              <div class="formula-box">$$\left(\frac{u}{v}\right)' = \frac{u'v - uv'}{v^2}$$</div>
+              <p>Order in numerator matters; square the bottom.</p>
+            </div>
+            <div class="compare-col">
+              <h3>Chain Rule</h3>
+              <p>For composite $y = f(g(x))$:</p>
+              <div class="formula-box">$$\frac{dy}{dx} = f'(g(x)) \cdot g'(x)$$</div>
+              <p>Always multiply by the inner derivative $g'(x)$.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-15">Card 15 · Product &amp; quotient</a> <a href="#card-16">Card 16 · Chain rule</a></p>
+        </article>
+
+        <article class="compare" id="compare-b" data-cat="diff">
+          <p class="kicker">⚡ Differentiation · Compare Page B</p>
+          <h2>First derivative test vs second derivative test</h2>
+          <p>Both classify a stationary point where $f'(x_0) = 0$.</p>
+          <div class="compare-grid cols-2">
+            <div class="compare-col">
+              <h3>First Derivative Test</h3>
+              <p>Checks the sign change of $f'(x)$ across $x_0$:</p>
+              <ul>
+                <li>$+$ to $-$ $\implies$ Local maximum</li>
+                <li>$-$ to $+$ $\implies$ Local minimum</li>
+                <li>No sign change $\implies$ Neither</li>
+              </ul>
+              <p>Works even when $f''(x_0) = 0$.</p>
+            </div>
+            <div class="compare-col">
+              <h3>Second Derivative Test</h3>
+              <p>Checks the sign of $f''(x_0)$ directly:</p>
+              <ul>
+                <li>$f''(x_0) &lt; 0 \implies$ Local maximum</li>
+                <li>$f''(x_0) &gt; 0 \implies$ Local minimum</li>
+                <li>$f''(x_0) = 0 \implies$ Inconclusive (use 1st test)</li>
+              </ul>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-22">Card 22 · First derivative test</a> <a href="#card-23">Card 23 · Second derivative test</a></p>
+        </article>
+
+        <article class="compare" id="compare-c" data-cat="diff">
+          <p class="kicker">⚡ Differentiation · Compare Page C</p>
+          <h2>Local vs global extrema</h2>
+          <div class="compare-grid cols-2">
+            <div class="compare-col">
+              <h3>Local Extrema</h3>
+              <p>Peaks or troughs relative to nearby points only. A local maximum can be lower than a local minimum elsewhere on the curve.</p>
+            </div>
+            <div class="compare-col">
+              <h3>Global Extrema on $[a, b]$</h3>
+              <p>The overall greatest and least values on the whole interval $[a, b]$. Always compare local extrema with endpoint values $f(a)$ and $f(b)$.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-22">Card 22 · Local extrema</a> <a href="#card-24">Card 24 · Global extrema</a></p>
+        </article>
+
+        <article class="compare" id="compare-d" data-cat="int">
+          <p class="kicker">🌊 Integration · Compare Page D</p>
+          <h2>Indefinite vs definite integrals, and where $+C$ goes</h2>
+          <div class="compare-grid cols-2">
+            <div class="compare-col">
+              <h3>Indefinite Integral</h3>
+              <div class="formula-box">$$\int f(x)\,dx = F(x) + C$$</div>
+              <p>Produces a <strong>family of functions</strong>. Always write $+C$ unless an initial condition fixes its value.</p>
+            </div>
+            <div class="compare-col">
+              <h3>Definite Integral</h3>
+              <div class="formula-box">$$\int_a^b f(x)\,dx = F(b) - F(a)$$</div>
+              <p>Produces a <strong>number</strong>. $+C$ cancels out in $F(b) - F(a)$ and must be omitted.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-26">Card 26 · $+C$</a> <a href="#card-30">Card 30 · FTC</a></p>
+        </article>
+
+        <article class="compare" id="compare-e" data-cat="int">
+          <p class="kicker">🌊 Integration · Compare Page E</p>
+          <h2>Exact integral vs trapezoidal estimate</h2>
+          <div class="compare-grid cols-2">
+            <div class="compare-col">
+              <h3>Exact Definite Integral</h3>
+              <p>Uses $F(b) - F(a)$ via the Fundamental Theorem of Calculus. Gives the exact value.</p>
+            </div>
+            <div class="compare-col">
+              <h3>Trapezoidal Estimate</h3>
+              <p>Approximates the region with $n$ trapezium strips. Over-estimate if $f'' &gt; 0$; under-estimate if $f'' &lt; 0$.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-30">Card 30 · FTC</a> <a href="#card-34">Card 34 · Trapezoidal rule</a></p>
+        </article>
+
+        <article class="compare" id="compare-f" data-cat="prob">
+          <p class="kicker">🎲 Probability &amp; Stats · Compare Page F</p>
+          <h2>$P(A \mid B)$ vs $P(B \mid A)$</h2>
+          <div class="compare-grid cols-2">
+            <div class="compare-col">
+              <h3>$P(A \mid B)$</h3>
+              <div class="formula-box">$$P(A \mid B) = \frac{P(A \cap B)}{P(B)}$$</div>
+              <p>Given $B$ has occurred ($B$ is the reduced sample space).</p>
+            </div>
+            <div class="compare-col">
+              <h3>$P(B \mid A)$</h3>
+              <div class="formula-box">$$P(B \mid A) = \frac{P(A \cap B)}{P(A)}$$</div>
+              <p>Given $A$ has occurred ($A$ is the reduced sample space). Found from tree branches via Bayes’ theorem.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-37">Card 37 · Conditional probability</a> <a href="#card-40">Card 40 · Bayes’ theorem</a></p>
+        </article>
+
+        <article class="compare" id="compare-g" data-cat="prob">
+          <p class="kicker">🎲 Probability &amp; Stats · Compare Page G</p>
+          <h2>Binomial vs Poisson as separate models</h2>
+          <div class="compare-grid cols-2">
+            <div class="compare-col">
+              <h3>Binomial $X \sim B(n, p)$</h3>
+              <p>Fixed number $n$ of independent trials; counts successes ($0, 1, \ldots, n$). $E(X)=np$, $\mathrm{Var}(X)=np(1-p)$.</p>
+            </div>
+            <div class="compare-col">
+              <h3>Poisson $X \sim \mathrm{Po}(\lambda)$</h3>
+              <p>Continuous interval of time/space; counts random occurrences ($0, 1, 2, \ldots$). $E(X)=\lambda$, $\mathrm{Var}(X)=\lambda$.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-46">Card 46 · Binomial</a> <a href="#card-47">Card 47 · Poisson</a></p>
+        </article>
+
+        <article class="compare" id="compare-h" data-cat="prob">
+          <p class="kicker">🎲 Probability &amp; Stats · Compare Page H</p>
+          <h2>Point estimate vs confidence interval</h2>
+          <div class="compare-grid cols-2">
+            <div class="compare-col">
+              <h3>Point Estimate</h3>
+              <p>A single number ($\bar{x}$ for $\mu$; $s^2$ for $\sigma^2$) computed from one sample, with no margin of error attached.</p>
+            </div>
+            <div class="compare-col">
+              <h3>Confidence Interval for $\mu$</h3>
+              <p>A range $\bar{x} \pm z_{\alpha/2}\cdot\text{SE}$ backed by a confidence level ($1-\alpha$) describing the long-run capture rate of the method.</p>
+            </div>
+          </div>
+          <p class="see-also"><strong>See also:</strong> <a href="#card-55">Card 55 · Point estimators</a> <a href="#card-56">Card 56 · Confidence interval</a></p>
+        </article>
+      </div>
+
+      <div class="bottom-card-nav">
+        <button type="button" class="comic-btn" id="btn-prev-bottom">⬅️ Previous Card</button>
+        <a href="#home" class="comic-btn">🏠 Back to 6 Categories</a>
+        <button type="button" class="comic-btn" id="btn-next-bottom">Next Card ➡️</button>
+      </div>
+    </section>
+
+    <footer class="doc-foot">
+      <p><strong>HKDSE Module 1 (Calculus and Statistics) Concept Atlas</strong> · Structured into 6 Core Pillars: Basic Knowledge (Ch. 1–2), Differentiation (Ch. 3–5), Integration (Ch. 6–8), Probability (Ch. 9–10), Discrete Random Variables (Ch. 11–12), and Normal Distribution &amp; Sampling (Ch. 13–14).</p>
+    </footer>
+  </main>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  const CAT_LABELS = {
+    basic: "1. Basic Knowledge",
+    diff: "2. Differentiation",
+    int: "3. Integration",
+    prob: "4. Probability",
+    drv: "5. Discrete Random Variables",
+    norm: "6. Normal Distribution & Sampling"
+  };
+
+  // Explicit mapping so cards 43–49 & Compare G map to "drv", and 50–56 & Compare H map to "norm"
+  const CAT_BY_ID = {
+    "card-43": "drv", "card-44": "drv", "card-45": "drv", "card-46": "drv",
+    "card-47": "drv", "card-48": "drv", "card-49": "drv", "compare-g": "drv",
+    "card-50": "norm", "card-51": "norm", "card-52": "norm", "card-53": "norm",
+    "card-54": "norm", "card-55": "norm", "card-56": "norm", "compare-h": "norm"
+  };
+
+  const KICKER_PREFIX = {
+    drv: "📊 Discrete Random Variables",
+    norm: "🔔 Normal Distribution & Sampling"
+  };
+
+  let activeCat = "all";
+  let orderedIds = [];
+  let indexItems = [];
+
+  function normalize(s) {
+    return String(s || "")
+      .toLowerCase()
+      .replace(/[’‘‛]/g, "'")
+      .replace(/[“”]/g, '"')
+      .replace(/[–—−]/g, "-")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function escapeHtml(s) {
+    return String(s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function applyCategoryOverrides() {
+    Object.keys(CAT_BY_ID).forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const newCat = CAT_BY_ID[id];
+      el.dataset.cat = newCat;
+      const kicker = el.querySelector(".kicker");
+      if (kicker && KICKER_PREFIX[newCat]) {
+        kicker.innerHTML = kicker.innerHTML.replace(/^🎲 Probability &amp; Stats|^🎲 Probability & Stats/, KICKER_PREFIX[newCat]);
+      }
+    });
+  }
+
+  function initData() {
+    applyCategoryOverrides();
+
+    const articles = Array.from(document.querySelectorAll("#articles-container > article"));
+    articles.forEach(art => {
+      const id = art.id;
+      const cat = art.dataset.cat || "basic";
+      const isCompare = art.classList.contains("compare");
+      const h2 = art.querySelector("h2");
+      const titleText = h2 ? h2.textContent.trim() : id;
+      const titleHtml = h2 ? h2.innerHTML : id;
+      const kickerText = (art.querySelector(".kicker") || {}).textContent || "";
+      const aliasEl = art.querySelector(".aliases");
+      const aliasText = aliasEl ? aliasEl.textContent.replace(/^Search aliases:\s*/i, "") : "";
+      const bodyText = art.textContent || "";
+      const firstP = Array.from(art.querySelectorAll("p")).find(p => !p.classList.contains("kicker") && !p.classList.contains("aliases") && !p.classList.contains("see-also"));
+      const snippet = firstP ? firstP.textContent.trim() : "";
+
+      let num = 999;
+      let letter = "";
+      if (isCompare) {
+        letter = id.replace("compare-", "");
+      } else {
+        num = parseInt(id.replace("card-", ""), 10) || 999;
+      }
+
+      indexItems.push({
+        id,
+        cat,
+        isCompare,
+        num,
+        letter,
+        titleText,
+        titleHtml,
+        kickerText,
+        snippet,
+        hay: normalize(id + " " + titleText + " " + aliasText + " " + kickerText + " " + bodyText),
+        titleHay: normalize(id + " " + titleText),
+        aliasHay: normalize(aliasText)
+      });
+    });
+
+    // Follow visual order in the category map
+    const mapLinks = Array.from(document.querySelectorAll("#chapter-map a.card-tile"));
+    orderedIds = mapLinks.map(a => a.getAttribute("href").replace(/^#/, ""));
+  }
+
+  function buildSidebar() {
+    const container = document.getElementById("sidebar-content");
+    if (!container) return;
+
+    const groups = ["basic", "diff", "int", "prob", "drv", "norm"];
+    let html = "";
+
+    groups.forEach(cat => {
+      const items = orderedIds
+        .map(id => indexItems.find(x => x.id === id))
+        .filter(item => item && item.cat === cat);
+
+      html += `<div class="side-group" data-cat="${cat}">`;
+      html += `<div class="side-group-title"><span>${CAT_LABELS[cat]}</span><span>${items.length}</span></div>`;
+      html += `<ul class="side-links">`;
+      items.forEach(item => {
+        html += `<li><a href="#${item.id}" data-target="${item.id}">${item.titleHtml}</a></li>`;
+      });
+      html += `</ul></div>`;
+    });
+
+    container.innerHTML = html;
+  }
+
+  function highlightSidebar(id) {
+    document.querySelectorAll("#sidebar-content a").forEach(a => {
+      a.classList.toggle("active-link", a.dataset.target === id);
+    });
+  }
+
+  // Category Pill Filtering
+  function setCategoryFilter(cat) {
+    activeCat = cat;
+    document.querySelectorAll(".cat-pill").forEach(btn => {
+      btn.classList.toggle("active", btn.dataset.cat === cat);
+    });
+
+    document.querySelectorAll(".category-block").forEach(sec => {
+      sec.hidden = (cat !== "all" && sec.dataset.cat !== cat);
+    });
+
+    const hero = document.querySelector(".hero-comic");
+    if (hero) hero.hidden = cat !== "all";
+
+    if (document.getElementById("home").hidden) {
+      navigateTo("home");
+    }
+  }
+
+  // Unified Navigation Helper (works cleanly even in sandboxed iframes)
+  function navigateTo(targetId) {
+    const cleanId = String(targetId || "home").replace(/^#/, "");
+    try {
+      if (location.hash !== "#" + cleanId) {
+        history.pushState(null, "", "#" + cleanId);
+      }
+    } catch (e) {
+      // Ignore history security errors in restricted preview frames
+    }
+    routeToId(cleanId);
+  }
+
+  // DOM References
+  const searchInput = document.getElementById("search");
+  const searchClear = document.getElementById("search-clear");
+  const resultsBox = document.getElementById("search-results");
+  const chapterMap = document.getElementById("chapter-map");
+  const homeView = document.getElementById("home");
+  const readerView = document.getElementById("reader");
+  const crumb = document.getElementById("crumb");
+  function renderKaTeX(rootEl) {
+    if (typeof renderMathInElement === "function") {
+      try {
+        renderMathInElement(rootEl || document.body, {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ],
+          throwOnError: false
+        });
+      } catch (e) {}
+    }
+  }
+
+  function scoreItem(item, query) {
+    const q = normalize(query);
+    if (!q) return null;
+
+    const mCard = /^(card\s*)?(\d{1,2})$/.exec(q);
+    if (mCard && !item.isCompare && item.num === parseInt(mCard[2], 10)) return 100;
+
+    const mCmp = /^(compare\s*|vs\s*)?([a-h])$/.exec(q);
+    if (mCmp && item.isCompare && item.letter === mCmp[2]) return 100;
+
+    if (item.hay.indexOf(q) !== -1) {
+      if (item.titleHay.indexOf(q) !== -1) return 90;
+      if (item.aliasHay.indexOf(q) !== -1) return 85;
+      return 70;
+    }
+
+    const ts = q.split(" ").filter(Boolean);
+    if (!ts.length) return null;
+    for (let i = 0; i < ts.length; i++) {
+      if (item.hay.indexOf(ts[i]) === -1) return null;
+    }
+    return 60;
+  }
+
+  function updateSearch() {
+    const q = searchInput.value;
+    const hasQuery = q.replace(/\s+/g, "").length > 0;
+    searchClear.hidden = !hasQuery;
+
+    if (!hasQuery) {
+      resultsBox.hidden = true;
+      resultsBox.innerHTML = "";
+      chapterMap.hidden = false;
+      return;
+    }
+
+    if (homeView.hidden) {
+      try {
+        history.replaceState(null, "", "#home");
+      } catch (e) {}
+      showHome(true);
+    }
+
+    chapterMap.hidden = true;
+    resultsBox.hidden = false;
+
+    const hits = [];
+    indexItems.forEach(item => {
+      const sc = scoreItem(item, q);
+      if (sc !== null) hits.push({ item, score: sc });
+    });
+
+    hits.sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score;
+      if (a.item.isCompare !== b.item.isCompare) return a.item.isCompare ? 1 : -1;
+      if (!a.item.isCompare) return a.item.num - b.item.num;
+      return a.item.letter < b.item.letter ? -1 : 1;
+    });
+
+    let html = `<h2>🔍 ${hits.length} ${hits.length === 1 ? "result" : "results"} found</h2>`;
+    if (!hits.length) {
+      html += `<p>No cards match “${escapeHtml(q)}”. Try another keyword or clear the search box.</p>`;
+      resultsBox.innerHTML = html;
+      return;
+    }
+
+    html += `<ul class="result-list">`;
+    hits.forEach(({ item }) => {
+      html += `<li><a href="#${item.id}">`;
+      html += `<p class="result-kicker">${escapeHtml(item.kickerText)}</p>`;
+      html += `<div class="result-title">${item.titleHtml}</div>`;
+      if (item.snippet) html += `<p class="result-snip">${escapeHtml(item.snippet)}</p>`;
+      html += `</a></li>`;
+    });
+    html += `</ul>`;
+    resultsBox.innerHTML = html;
+    renderKaTeX(resultsBox);
+  }
+
+  function showHome(keepScroll) {
+    homeView.hidden = false;
+    readerView.hidden = true;
+    document.querySelectorAll("#articles-container > article").forEach(a => {
+      a.hidden = true;
+    });
+    highlightSidebar("");
+    if (!keepScroll) {
+      window.scrollTo(0, 0);
+    }
+  }
+
+  function showArticle(id) {
+    const target = document.getElementById(id);
+    if (!target) {
+      showHome();
+      return;
+    }
+
+    homeView.hidden = true;
+    readerView.hidden = false;
+    document.querySelectorAll("#articles-container > article").forEach(a => {
+      a.hidden = (a.id !== id);
+    });
+
+    const item = indexItems.find(x => x.id === id);
+    if (item && crumb) {
+      const catName = CAT_LABELS[item.cat] || "";
+      const shortLabel = item.isCompare ? `Compare ${item.letter.toUpperCase()}` : `Card ${item.num}`;
+      crumb.innerHTML = `<a href="#home">🏠 Atlas Home</a> <span>›</span> <a href="#cat-${item.cat}">${escapeHtml(catName)}</a> <span>›</span> <span>${shortLabel}</span>`;
+    }
+
+    const pos = orderedIds.indexOf(id);
+    const prevId = pos > 0 ? orderedIds[pos - 1] : orderedIds[orderedIds.length - 1];
+    const nextId = pos < orderedIds.length - 1 ? orderedIds[pos + 1] : orderedIds[0];
+
+    const goPrev = () => { navigateTo(prevId); };
+    const goNext = () => { navigateTo(nextId); };
+
+    document.getElementById("btn-prev").onclick = goPrev;
+    document.getElementById("btn-next").onclick = goNext;
+    document.getElementById("btn-prev-bottom").onclick = goPrev;
+    document.getElementById("btn-next-bottom").onclick = goNext;
+
+    highlightSidebar(id);
+    window.scrollTo(0, 0);
+    renderKaTeX(target);
+  }
+
+  function routeToId(raw) {
+    const clean = (raw || "home").replace(/^#/, "");
+    if (!clean || clean === "home") {
+      showHome();
+      return;
+    }
+    if (clean.startsWith("cat-")) {
+      const catKey = clean.replace("cat-", "");
+      if (CAT_LABELS[catKey]) {
+        setCategoryFilter(catKey);
+        showHome(true);
+        const sec = document.getElementById(clean);
+        if (sec) sec.scrollIntoView({ block: "start" });
+        return;
+      }
+    }
+    if (document.getElementById(clean)) {
+      showArticle(clean);
+      return;
+    }
+    showHome();
+  }
+
+  function handleRoute() {
+    routeToId(location.hash || "#home");
+  }
+
+  // Event Listeners
+  document.addEventListener("click", ev => {
+    const link = ev.target.closest("a[href^='#']");
+    if (!link) return;
+    const href = link.getAttribute("href");
+    if (href && href.length > 1) {
+      ev.preventDefault();
+      navigateTo(href);
+    }
+  });
+
+  document.querySelectorAll(".cat-pill").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const cat = btn.dataset.cat;
+      if (searchInput.value) {
+        searchInput.value = "";
+        updateSearch();
+      }
+      setCategoryFilter(cat);
+      if (!homeView.hidden) {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  });
+
+  document.getElementById("btn-random").addEventListener("click", () => {
+    if (!orderedIds.length) return;
+    const activeArticle = document.querySelector("#articles-container > article:not([hidden])");
+    const current = activeArticle ? activeArticle.id : "";
+    let pick = orderedIds[Math.floor(Math.random() * orderedIds.length)];
+    if (orderedIds.length > 1 && pick === current) {
+      pick = orderedIds[(orderedIds.indexOf(pick) + 1) % orderedIds.length];
+    }
+    navigateTo(pick);
+  });
+
+  searchInput.addEventListener("input", updateSearch);
+  searchInput.addEventListener("keydown", ev => {
+    if (ev.key === "Escape") {
+      searchInput.value = "";
+      updateSearch();
+    }
+  });
+
+  searchClear.addEventListener("click", () => {
+    searchInput.value = "";
+    updateSearch();
+    searchInput.focus();
+  });
+
+  document.getElementById("search-form").addEventListener("submit", ev => {
+    ev.preventDefault();
+    const first = resultsBox.querySelector(".result-list a");
+    if (first) {
+      navigateTo(first.getAttribute("href"));
+    }
+  });
+
+  window.addEventListener("hashchange", handleRoute);
+  window.addEventListener("popstate", handleRoute);
+
+  function boot() {
+    initData();
+    buildSidebar();
+    renderKaTeX(document.body);
+    handleRoute();
+    // Re-run KaTeX once deferred scripts finish loading if needed
+    window.addEventListener("load", () => renderKaTeX(document.body));
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", boot);
+  } else {
+    boot();
+  }
+})();
+</script>
+</body>
+</html>
